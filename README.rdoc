@@ -3,7 +3,8 @@
 == How to use
 * fork and clone
 * bundle
-* create a .env in rails root with your secret token
+* create a .env in rails root with your secret token ( if production env wanted )
+* copy config/database.yml.bak to config/database.yml and edit as needed
 * create and migrate database
 * documentation can be generated using 'yard doc'
 == Rails and Ruby Versions
