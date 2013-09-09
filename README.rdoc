@@ -5,6 +5,7 @@
 * bundle
 * create a .env in rails root with your secret token
 * create and migrate database
+* documentation can be generated using 'yard doc'
 == Rails and Ruby Versions
 * Rails 4.0.0
 * Ruby 2.0.0p247
@@ -12,3 +13,6 @@
 * psql (PostgreSQL) 9.2.4
 == Test Suit
 * rspec 2.13.1
+== Documentation
+* yard 0.8.7
+* annotate v2.5.0

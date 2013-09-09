@@ -19,3 +19,7 @@
 
 # Ignore rspec settings file
 /.rspec
+
+# Ignore documentation files
+/doc/
+/.yardoc/
