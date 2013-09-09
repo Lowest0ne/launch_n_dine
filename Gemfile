@@ -46,3 +46,8 @@ end
 
 # Use dotenv for enviornment variables
 gem 'dotenv-rails'
+
+# Use rspec for testing
+group :development, :test do
+    gem 'rspec-rails'
+end

@@ -16,3 +16,6 @@
 
 # Ignore config/datatbase.yml
 /config/database.yml
+
+# Ignore rspec settings file
+/.rspec

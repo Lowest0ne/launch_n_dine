@@ -10,3 +10,5 @@
 * Ruby 2.0.0p247
 == Database
 * psql (PostgreSQL) 9.2.4
+== Test Suit
+* rspec 2.13.1
