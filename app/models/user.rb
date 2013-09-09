@@ -9,6 +9,7 @@
 #  last_name  :string(255)      not null
 #
 # @todo Has many Restaurants through RestaurantOwnership
+# @todo has many orders
 # @note validates presence of first_name, last_name
 
 class User < ActiveRecord::Base

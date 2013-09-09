@@ -9,6 +9,7 @@
 #  price      :float            not null
 #
 # @todo Belongs to Menu
+# @todo associtation with OrderItem
 # @note validates presence of name
 # @note validates numericality of price, with value >= 0
 
