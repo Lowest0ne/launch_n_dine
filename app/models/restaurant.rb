@@ -7,7 +7,10 @@
 #  updated_at :datetime
 #  name       :string(255)      not null
 #
+# @todo Has many Users through RestaurantOwnership
+# @todo Has many Menus
 
 class Restaurant < ActiveRecord::Base
     validates_presence_of :name
+
 end
