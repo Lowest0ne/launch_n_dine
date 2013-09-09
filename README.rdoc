@@ -1,9 +1,10 @@
 = Launch 'n Dine
-== An automous food delivery service
+== An autonomous food delivery service
 == How to use
 * fork and clone
 * bundle
-* create a .env in rails root with your secret token
+* create a .env in rails root with your secret token ( if production env wanted )
+* copy config/database.yml.bak to config/database.yml and edit as needed
 * create and migrate database
 * documentation can be generated using 'yard doc'
 == Rails and Ruby Versions
@@ -11,7 +12,7 @@
 * Ruby 2.0.0p247
 == Database
 * psql (PostgreSQL) 9.2.4
-== Test Suit
+== Test Suite
 * rspec 2.13.1
 == Documentation
 * yard 0.8.7
