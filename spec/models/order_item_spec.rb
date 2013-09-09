@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe OrderItem do
-  pending "add some examples to (or delete) #{__FILE__}"
+    it { should have_valid( :quantity ).when(1)      }
+    it { should_not have_valid( :quantity ).when(0)  }
+    it { should_not have_valid( :quantity ).when(-1) }
 end
