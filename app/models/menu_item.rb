@@ -9,6 +9,8 @@
 #  price      :float            not null
 #
 # @todo Belongs to Menu
+# @note validates presence of name
+# @note validates numericality of price, with value >= 0
 
 class MenuItem < ActiveRecord::Base
     validates_presence_of     :name

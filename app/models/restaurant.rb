@@ -9,6 +9,7 @@
 #
 # @todo Has many Users through RestaurantOwnership
 # @todo Has many Menus
+# @note validates presence of name
 
 class Restaurant < ActiveRecord::Base
     validates_presence_of :name
