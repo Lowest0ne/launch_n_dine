@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: menu_items
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#  name       :string(255)      not null
+#  price      :float            not null
+#
+
 require 'spec_helper'
 
 describe MenuItem do
