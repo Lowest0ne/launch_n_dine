@@ -52,4 +52,6 @@ gem 'dotenv-rails'
 # Use rspec for testing
 group :development, :test do
     gem 'rspec-rails'
+    gem 'valid_attribute'
+    gem 'shoulda'
 end

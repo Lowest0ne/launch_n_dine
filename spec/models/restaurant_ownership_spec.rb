@@ -12,27 +12,12 @@
 require 'spec_helper'
 
 describe RestaurantOwnership do
-    let ( :ownership ) { RestaurantOwnership.new }
 
-    describe "a valid restaurant ownership" do
+    it { should have_valid( :user_id ).when(1)     }
+    it { should_not have_valid( :user_id).when(0)  }
+    it { should_not have_valid( :user_id).when(-1) }
 
-        it "should have a user and restaurant id" do
-            ownership.user_id = 1
-            ownership.restaurant_id = 1
-            ownership.should be_valid
-        end
-    end
-
-    describe "an invalid restaurant ownership" do
-
-        it "should not have a user id" do
-            ownership.user_id = nil
-            ownership.should_not be_valid
-        end
-
-        it "should not have a restaurant id" do
-            ownership.restaurant_id = nil
-            ownership.should_not be_valid
-        end
-    end
+    it { should have_valid( :restaurant_id ).when(1)     }
+    it { should_not have_valid( :restaurant_id).when(0)  }
+    it { should_not have_valid( :restaurant_id).when(-1) }
 end

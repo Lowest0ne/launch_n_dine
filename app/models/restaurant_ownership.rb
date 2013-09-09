@@ -12,5 +12,6 @@
 # @todo Belongs to Restaurant
 # @note validates presence of user_id, restaurant_id
 class RestaurantOwnership < ActiveRecord::Base
-    validates_presence_of :user_id, :restaurant_id
+    validates_numericality_of :user_id, greater_than: 0
+    validates_numericality_of :restaurant_id, greater_than: 0
 end
