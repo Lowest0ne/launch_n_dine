@@ -1,5 +1,5 @@
 = Launch 'n Dine
-== An automous food delivery service
+== An autonomous food delivery service
 == How to use
 * fork and clone
 * bundle
@@ -11,7 +11,7 @@
 * Ruby 2.0.0p247
 == Database
 * psql (PostgreSQL) 9.2.4
-== Test Suit
+== Test Suite
 * rspec 2.13.1
 == Documentation
 * yard 0.8.7
