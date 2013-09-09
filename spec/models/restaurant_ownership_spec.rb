@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: restaurant_ownerships
+#
+#  id            :integer          not null, primary key
+#  created_at    :datetime
+#  updated_at    :datetime
+#  user_id       :integer          not null
+#  restaurant_id :integer          not null
+#
+
 require 'spec_helper'
 
 describe RestaurantOwnership do
