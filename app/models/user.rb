@@ -12,6 +12,6 @@
 # @note validates presence of first_name, last_name
 
 class User < ActiveRecord::Base
-    validates_presence_of :first_name, :last_name
-
+    validates_presence_of :first_name
+    validates_presence_of :last_name
 end
