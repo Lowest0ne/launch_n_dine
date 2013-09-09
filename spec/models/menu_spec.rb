@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: menus
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#  name       :string(255)      not null
+#
+
 require 'spec_helper'
 
 describe Menu do
