@@ -8,4 +8,6 @@ describe User do
   it { should     have_valid(:role).when( *User.valid_roles ) }
   it { should_not have_valid(:role).when( nil, '', 'anythingelse', 'drivera', 'adriver' ) }
 
+  it { should have_many(:restaurants) }
+
 end

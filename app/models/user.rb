@@ -7,9 +7,8 @@ class User < ActiveRecord::Base
   def self.valid_roles
     ROLES
   end
-
-
-
   validates_format_of :role, with: /\Adriver\z|\Acustomer\z|\Aowner\z/
+
+  has_many :restaurants
 
 end
