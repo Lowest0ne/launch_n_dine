@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "first_name":"Michael",
+      "last_name":"Swanson",
+      "role":"owner"
+    },
+    {
+      "first_name":"Carl",
+      "last_name":"Schwope",
+      "role":"driver"
+    },
+    {
+      "first_name":"Stephanie",
+      "last_name":"Vicarri",
+      "role":"customer"
+    },
+    {
+      "first_name":"Daniel",
+      "last_name":"McCoy",
+      "role":"customer"
+    }
+
+  ]
+}
