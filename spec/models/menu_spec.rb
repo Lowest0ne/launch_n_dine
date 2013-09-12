@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Menu do
 
-  it_has_string( :name )
+  it { should validate_presence_of( :name ) }
 
   it { should     have_valid( :restaurant ).when( Restaurant.new ) }
   it { should_not have_valid( :restaurant ).when( nil ) }
