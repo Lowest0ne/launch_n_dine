@@ -8,5 +8,6 @@ describe Menu do
   it { should_not have_valid( :restaurant ).when( nil ) }
 
   it { should belong_to( :restaurant ) }
+  it { should have_many( :menu_items ) }
 
 end
