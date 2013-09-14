@@ -46,10 +46,11 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# Use dotenv for enviornment variables
-gem 'dotenv-rails'
-
 # Use rspec for testing
 group :development, :test do
     gem 'rspec-rails'
+    gem 'shoulda'
+    gem 'valid_attribute'
+    gem 'factory_girl'
+    gem 'capybara'
 end

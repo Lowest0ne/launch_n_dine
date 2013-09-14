@@ -11,8 +11,8 @@
 /log/*.log
 /tmp
 
-# Ignore enviornment variables
-/.env
+# Ignore secret key
+/.secret
 
 # Ignore config/datatbase.yml
 /config/database.yml
