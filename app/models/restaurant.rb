@@ -5,4 +5,5 @@ class Restaurant < ActiveRecord::Base
   belongs_to :user, inverse_of: :restaurants
 
   has_many :menus
+  has_many :orders
 end

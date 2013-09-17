@@ -9,4 +9,6 @@ describe Restaurant do
 
   it { should belong_to( :user  ) }
   it { should have_many( :menus ) }
+  it { should have_many( :orders ) }
+
 end
