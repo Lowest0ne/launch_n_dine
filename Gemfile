@@ -48,9 +48,11 @@ end
 
 # Use rspec for testing
 group :development, :test do
-    gem 'rspec-rails'
-    gem 'shoulda'
-    gem 'valid_attribute'
-    gem 'factory_girl'
-    gem 'capybara'
+  gem 'rspec-rails'
+  gem 'shoulda'
+  gem 'valid_attribute'
+  gem 'factory_girl'
+  gem 'capybara'
+  gem "rails-erd"
 end
+
