@@ -12,4 +12,5 @@ describe Order do
   it { should belong_to(:driver) }
   it { should belong_to(:restaurant) }
 
+  it { should have_many(:order_items) }
 end

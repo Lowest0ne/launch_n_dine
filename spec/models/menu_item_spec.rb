@@ -12,4 +12,6 @@ describe MenuItem do
   it { should_not have_valid(:menu).when(nil) }
 
   it { should belong_to( :menu ) }
+  it { should have_many( :order_items ) }
+
 end
