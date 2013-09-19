@@ -6,4 +6,6 @@ class Restaurant < ActiveRecord::Base
 
   has_many :menus
   has_many :orders
+  has_many :locations, as: :findable
+
 end
