@@ -29,6 +29,7 @@ group :doc do
   gem 'sdoc', require: false
   gem 'yard-rails', require: false
   gem 'annotate', require: false
+  gem "rails-erd"
 end
 
 # Use ActiveModel has_secure_password
@@ -50,6 +51,8 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'factory_girl'
   gem 'capybara'
-  gem "rails-erd"
 end
 
+gem 'devise'
+gem 'simple_form'
+gem 'zurb-foundation', '~> 4.0.0'

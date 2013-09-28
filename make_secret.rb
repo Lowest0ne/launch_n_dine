@@ -23,6 +23,8 @@ def secure_token key
     # Generate a new token and store it in token_file.
     secret_hash = {
       core_key_base: SecureRandom.hex(64),
+      devise_core:  SecureRandom.hex(64),
+      devise_pepper: SecureRandom.hex(64),
     }
     File.write(token_file, secret_hash.to_json)
     secret_hash[key]
