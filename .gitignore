@@ -12,7 +12,7 @@
 /tmp
 
 # Ignore secret key
-/.secret
+/.secret_keys.json
 
 # Ignore config/datatbase.yml
 /config/database.yml
