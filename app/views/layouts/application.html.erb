@@ -22,9 +22,11 @@
 
   <body>
 
+    <%= render 'layouts/nav' %>
+    <%= flash[:notice] %>
     <%= yield %>
 
-    
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
