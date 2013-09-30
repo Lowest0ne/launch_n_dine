@@ -6,6 +6,7 @@ class Restaurant < ActiveRecord::Base
 
   has_many :menus
   has_many :orders
-  has_many :locations, as: :findable
+  has_many :locations, as: :findable, inverse_of: :findable
 
+  accepts_nested_attributes_for :locations
 end

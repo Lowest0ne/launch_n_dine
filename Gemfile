@@ -51,6 +51,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'factory_girl'
   gem 'capybara'
+  gem 'pry-rails'
 end
 
 gem 'devise'
