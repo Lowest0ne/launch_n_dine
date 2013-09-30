@@ -6,13 +6,7 @@ feature 'user signs in' do
 
   scenario 'an existing user with valid information' do
 
-    visit root_path
-    click_link 'Sign In'
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Sign In'
+    sign_in(user)
 
     page.should have_content('Sign Out')
     page.should_not have_content('Sign In')
@@ -21,12 +15,8 @@ feature 'user signs in' do
 
   scenario 'an existing user with invalid password' do
 
-    visit root_path
-    click_link 'Sign In'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: 'wrong_password'
-
-    click_button 'Sign In'
+    user.password = 'wrong_password'
+    sign_in(user)
 
     page.should_not have_content('Sign Out')
     page.should have_content('Sign In')
