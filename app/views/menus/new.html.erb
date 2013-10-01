@@ -1,0 +1,10 @@
+<%= content_tag :h1, 'Add Menu' %>
+
+<%= simple_form_for @menu, url: restaurant_menus_path(params[:restaurant_id]) do |form| %>
+  <%= form.input :name,
+              label: false,
+              placeholder: 'Name',
+              required: true,
+              autofocus: true %>
+  <%= form.submit 'Add Menu' %>
+<% end %>
