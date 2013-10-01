@@ -19,7 +19,7 @@ feature 'restaurant owner signs up' do
     fill_in 'Restaurant City', with: 'Boston'
     fill_in 'Restaurant State', with: 'Massachusetts'
 
-    click_on 'Sign Up'
+    click_button 'Sign Up'
 
     expect( User.where( role: 'owner' ).count ).to eql( prev_count + 1 )
 
