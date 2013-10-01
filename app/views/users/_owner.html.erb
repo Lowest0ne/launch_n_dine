@@ -1,0 +1,7 @@
+
+<h3>My Restaurants</h3>
+<ul>
+<% @user.restaurants.each do | restaurant | %>
+  <%= content_tag :li, restaurant.name %>
+<% end %>
+</ul>
