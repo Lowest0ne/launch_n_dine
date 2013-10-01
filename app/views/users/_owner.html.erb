@@ -2,6 +2,6 @@
 <h3>My Restaurants</h3>
 <ul>
 <% @user.restaurants.each do | restaurant | %>
-  <%= content_tag :li, restaurant.name %>
+  <%= content_tag :li, link_to(restaurant.name, new_restaurant_menu_path(restaurant))  %>
 <% end %>
 </ul>

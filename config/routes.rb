@@ -3,6 +3,13 @@ LaunchNDine::Application.routes.draw do
     controllers: { registrations: 'launch/registrations' }
 
   resources :users, only: [:show]
+
+  resources :restaurants, only: [] do
+    resources :menus, only: [:new, :create]
+  end
+
+  resources :menus, only: [:show]
+
   root 'pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
