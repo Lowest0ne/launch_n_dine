@@ -4,10 +4,13 @@ class Launch::RegistrationsController < Devise::RegistrationsController
   def new
     build_resource({ role: params[:role] })
 
-    self.resource.locations.build
-    self.resource.restaurants.build if params[:role] == 'owner'
-    self.resource.restaurants.last.locations.build if params[:role] == 'owner'
-
+    case params[:role]
+      when 'owner' then
+        self.resource.restaurants.build
+        self.resource.restaurants.last.locations.build
+      when 'customer' then
+        self.resource.locations.build
+    end
 
     respond_with self.resource
   end

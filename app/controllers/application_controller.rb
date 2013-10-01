@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [ :first_name, :last_name, :role,
-      restaurants_attributes: [ :name, locations_attributes:[ :street, :city, :state] ] ]
+      restaurants_attributes: [ :name, locations_attributes:[ :street, :city, :state] ],
+      locations_attributes:[ :street, :city, :state] ]
   end
 
 end

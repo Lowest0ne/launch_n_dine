@@ -20,6 +20,12 @@
       <% end %>
     <% end %>
 
+    <%= f.simple_fields_for( :locations ) do |location_form| %>
+      <%= location_form.input :street, label: 'Street', required: true %>
+      <%= location_form.input :city, label: 'City', required: true %>
+      <%= location_form.input :state, label: 'State', required: true %>
+    <% end %>
+
   </div>
 
   <div class="form-actions">
