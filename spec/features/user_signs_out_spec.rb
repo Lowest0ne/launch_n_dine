@@ -12,5 +12,8 @@ feature 'user signs out' do
     sign_in(user)
 
     click_link 'Sign Out'
+
+    page.should_not have_content('Sign Out')
+    page.should have_content('Sign In')
   end
 end
