@@ -8,16 +8,16 @@ feature 'restaurant owner signs up' do
 
     visit root_path
     click_on 'Restaurant Owner?'
-    fill_in 'First Name', with: 'Carl'
-    fill_in 'Last Name', with: 'Schwope'
-    fill_in 'Email', with: 'schwope.carl@gmail.com'
-    fill_in 'Password', with: 'my_password'
-    fill_in 'Password Confirmation', with: 'my_password'
+    fill_in 'user_first_name', with: 'Carl'
+    fill_in 'user_last_name', with: 'Schwope'
+    fill_in 'user_email', with: 'schwope.carl@gmail.com'
+    fill_in 'user_password', with: 'my_password'
+    fill_in 'user_password_confirmation', with: 'my_password'
 
-    fill_in 'Restaurant Name', with: 'Breakfast With Carl'
-    fill_in 'Restaurant Address', with: '33 Harrison Ave'
-    fill_in 'Restaurant City', with: 'Boston'
-    fill_in 'Restaurant State', with: 'Massachusetts'
+    fill_in 'user_restaurants_attributes_0_name', with: 'Breakfast With Carl'
+    fill_in 'user_restaurants_attributes_0_locations_attributes_0_street', with: '33 Harrison Ave'
+    fill_in 'user_restaurants_attributes_0_locations_attributes_0_city', with: 'Boston'
+    fill_in 'user_restaurants_attributes_0_locations_attributes_0_state', with: 'Massachusetts'
 
     click_button 'Sign Up'
 

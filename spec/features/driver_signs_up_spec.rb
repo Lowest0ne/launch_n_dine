@@ -10,11 +10,11 @@ feature 'driver signs up' do
     visit root_path
     click_link 'Driver?'
 
-    fill_in 'First Name', with: 'Carl'
-    fill_in 'Last Name', with: 'Schwope'
-    fill_in 'Email', with: 'schwope.carl@gmail.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
+    fill_in "user_first_name", with: 'Carl'
+    fill_in 'user_last_name', with: 'Schwope'
+    fill_in 'user_email', with: 'schwope.carl@gmail.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
 
     click_button 'Sign Up'
 

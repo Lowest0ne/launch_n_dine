@@ -15,14 +15,14 @@ feature 'customer signs up' do
     page.should_not have_content('Restaurant State')
     page.should_not have_content('Restaurant Name')
 
-    fill_in 'First Name', with: 'Carl'
-    fill_in 'Last Name', with: 'Schwope'
-    fill_in 'Street', with: '40 Beacon St.'
-    fill_in 'City', with: 'Chelsea'
-    fill_in 'State', with: 'MA'
-    fill_in 'Email', with: 'schwope.carl@gmail.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
+    fill_in 'user_first_name', with: 'Carl'
+    fill_in 'user_last_name', with: 'Schwope'
+    fill_in 'user_locations_attributes_0_street', with: '40 Beacon St.'
+    fill_in 'user_locations_attributes_0_city', with: 'Chelsea'
+    fill_in 'user_locations_attributes_0_state', with: 'MA'
+    fill_in 'user_email', with: 'schwope.carl@gmail.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
 
     click_button 'Sign Up'
 
