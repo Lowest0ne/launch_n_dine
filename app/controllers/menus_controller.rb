@@ -11,13 +11,12 @@ class MenusController < ApplicationController
   end
 
   def create
-    current_user.restaurants.find( params[:restaurant_id] )
-    @menu = Menu.new( menu_params )
-    @menu.restaurant_id = params[:restaurant_id]
+    restaurant = Restaurant.find( params[:restaurant_id] )
+    @menu = restaurant.menus.new( menu_params )
     if @menu.save
-      redirect_to menu_path( @menu ),  notice: 'Menu Added'
+      redirect_to restaurant_menus_path( restaurant ),  notice: 'Menu Added'
     else
-      render new_restaurant_menu_path( params[:restaurant_id] )
+      render restaurant_menus_path( restaurant )
     end
   end
 
