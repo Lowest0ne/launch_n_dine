@@ -13,6 +13,7 @@ FactoryGirl.define do
 
       after(:create) do |owner|
         FactoryGirl.create( :restaurant, user: owner )
+        FactoryGirl.create( :restaurant, user: owner )
       end
     end
   end
@@ -24,12 +25,16 @@ FactoryGirl.define do
   end
 
   factory :restaurant do
-    name 'Breakfast With Carl'
+    sequence(:name){|n|"restaurant#{n}"}
     after(:create) do |restaurant|
       FactoryGirl.create(:location, findable: restaurant )
+      FactoryGirl.create(:menu, restaurant: restaurant )
     end
   end
 
+  factory :menu do
+    sequence(:name){|n|"menu#{n}"}
+  end
 
 
 end
