@@ -3,7 +3,10 @@
     <li class='name'><h1><%= link_to "Launch 'n Dine",  root_path %></h1></li>
   </ul>
   <section class='top-bar-section'>
-    <ul class="right">
+    <ul class='left'>
+      <%= content_tag(:li, flash[:notice], id: 'launch_notice') if flash[:notice] %>
+    </ul>
+    <ul class='right'>
     <% if user_signed_in? %>
       <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete  %></li>
     <% else %>
