@@ -19,4 +19,19 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :restaurants
   accepts_nested_attributes_for :locations
 
+  after_create :send_registration_email
+
+  private
+  def send_registration_email
+    case self.role
+      when 'customer'
+        CustomerMailer.registration(self).deliver
+      when 'owner'
+        OwnerMailer.registration(self).deliver
+      when 'driver'
+        DriverMailer.registration(self).deliver
+    end
+
+  end
+
 end

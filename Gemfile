@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.0.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -38,6 +40,8 @@ gem 'jbuilder', '~> 1.2'
 
 # Use rspec for testing
 group :development, :test do
+  gem 'mailcatcher'
+  gem 'email_spec'
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'valid_attribute'
@@ -53,3 +57,5 @@ end
 gem 'devise'
 gem 'simple_form'
 gem 'zurb-foundation', '~> 4.0.0'
+
+gem 'rails_12factor', group: :production

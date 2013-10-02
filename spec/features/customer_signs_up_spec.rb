@@ -4,6 +4,8 @@ feature 'customer signs up' do
 
   scenario 'with valid information' do
 
+    ActionMailer::Base.deliveries = []
+
     total_count  = User.count
     customer_count = User.where( role: 'customer').count
 
@@ -32,6 +34,13 @@ feature 'customer signs up' do
     page.should have_content('Sign Out')
     page.should_not have_content('Sign In')
     page.should_not have_content('Sign Up')
+
+    expect( ActionMailer::Base.deliveries.size).to eql(1)
+    last_email = ActionMailer::Base.deliveries.last
+
+    expect( last_email ).to have_subject("Launch 'n Dine Welcomes You")
+    expect( last_email ).to deliver_to( User.last.email )
+    expect( last_email ).to have_body_text("Thanks for being a customer")
 
   end
 
