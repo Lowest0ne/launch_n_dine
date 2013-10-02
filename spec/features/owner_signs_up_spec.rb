@@ -4,6 +4,8 @@ feature 'restaurant owner signs up' do
 
   scenario 'with valid information' do
 
+    ActionMailer::Base.deliveries = []
+
     prev_count = User.where( role: 'owner').count
 
     visit root_path
@@ -29,6 +31,12 @@ feature 'restaurant owner signs up' do
     page.should_not have_content("Restaurant Owner?")
     page.should_not have_content("Sign In")
 
+    expect( ActionMailer::Base.deliveries.size).to eql(1)
+    last_email = ActionMailer::Base.deliveries.last
+
+    expect( last_email ).to have_subject("Launch 'n Dine Welcomes You")
+    expect( last_email ).to deliver_to( User.last.email )
+    expect( last_email ).to have_body_text("Thanks for owning a Restaurant")
   end
 
 

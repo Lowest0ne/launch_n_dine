@@ -14,4 +14,9 @@ describe User do
 
   it { should have_many(:locations) }
 
+  it 'sends an email after registration' do
+    prev_count = ActionMailer::Base.deliveries.count
+    FactoryGirl.create(:user)
+    expect( ActionMailer::Base.deliveries.count ).to eql( prev_count + 1 )
+  end
 end
