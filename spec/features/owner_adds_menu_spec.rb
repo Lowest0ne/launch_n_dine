@@ -4,10 +4,8 @@ feature 'owner adds menu' do
 
   scenario 'with valid information' do
 
-    owner = FactoryGirl.create(:owner)
+    owner = create_signed_in(:owner)
     restaurant = owner.restaurants.last
-
-    sign_in(owner)
 
     visit user_path(owner)
     click_link restaurant.name
