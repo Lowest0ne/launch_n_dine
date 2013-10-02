@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 1.2'
 
 # Use rspec for testing
 group :development, :test do
+  gem 'mailcatcher'
+  gem 'email_spec'
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'valid_attribute'
