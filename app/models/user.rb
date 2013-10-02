@@ -23,7 +23,15 @@ class User < ActiveRecord::Base
 
   private
   def send_registration_email
-    UserMailer.registration(self).deliver
+    case self.role
+      when 'customer'
+        CustomerMailer.registration(self).deliver
+      when 'owner'
+        OwnerMailer.registration(self).deliver
+      when 'driver'
+        DriverMailer.registration(self).deliver
+    end
+
   end
 
 end
