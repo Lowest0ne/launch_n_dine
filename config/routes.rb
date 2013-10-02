@@ -5,7 +5,7 @@ LaunchNDine::Application.routes.draw do
   resources :users, only: [:show]
 
   resources :restaurants, only: [] do
-    resources :menus, only: [:new, :create]
+    resources :menus, only: [:new, :create, :index]
   end
 
   resources :menus, only: [:show]

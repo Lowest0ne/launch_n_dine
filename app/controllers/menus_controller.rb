@@ -4,6 +4,12 @@ class MenusController < ApplicationController
     @menu = Menu.new
   end
 
+  def index
+    @restaurant = Restaurant.find( params[:restaurant_id] )
+    @menus = @restaurant.menus
+    @new_menu = @restaurant.menus.build
+  end
+
   def create
     current_user.restaurants.find( params[:restaurant_id] )
     @menu = Menu.new( menu_params )
