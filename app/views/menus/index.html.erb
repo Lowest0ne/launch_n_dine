@@ -1,0 +1,13 @@
+
+<ul>
+  <% @menus.each do | menu | %>
+   <%= content_tag :li, menu.name %>
+  <% end %>
+  <li>
+    <%= simple_form_for @new_menu, url: restaurant_menus_path do |form| %>
+      <%= form.input :name, label: false, placeholder: 'menu name' %>
+      <%= form.button :submit, 'Add Menu' %>
+    <% end %>
+  </li>
+
+</ul>
