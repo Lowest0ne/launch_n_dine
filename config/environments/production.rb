@@ -77,4 +77,17 @@ LaunchNDine::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mandrillapp.com',
+    port: 587,
+    username: ENV['MANDRILL_USERNAME'],
+    password: ENV['MANDRILL_APIKEY'],
+    domain: 'heroku.com',
+    authentication: :plain
+  }
+  config.action_mailer.default_url_options = {
+      :host => 'vast-crag-6287.herokuapp.com'
+  }
 end

@@ -26,14 +26,6 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-  gem 'yard-rails', require: false
-  gem 'annotate', require: false
-  gem "rails-erd"
-end
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -48,12 +40,18 @@ end
 
 # Use rspec for testing
 group :development, :test do
+  gem 'mailcatcher'
+  gem 'email_spec'
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'factory_girl'
   gem 'capybara'
   gem 'pry-rails'
+  gem 'sdoc', require: false
+  gem 'yard-rails', require: false
+  gem 'annotate', require: false
+  gem "rails-erd"
 end
 
 gem 'devise'
