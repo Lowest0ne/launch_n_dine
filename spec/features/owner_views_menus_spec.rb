@@ -4,10 +4,8 @@ feature 'owner views menus' do
 
   scenario 'the owner can just do it' do
 
-    owner = FactoryGirl.create(:owner)
+    owner = create_signed_in(:owner)
     restaurant = owner.restaurants.first
-    sign_in(owner)
-
 
     click_link restaurant.name
 

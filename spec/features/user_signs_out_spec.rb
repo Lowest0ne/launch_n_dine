@@ -8,8 +8,7 @@ feature 'user signs out' do
   end
 
   scenario 'a user who is signed in can sign out' do
-    user = FactoryGirl.create(:user)
-    sign_in(user)
+    user = create_signed_in(:user)
 
     click_link 'Sign Out'
 

@@ -8,3 +8,9 @@ def sign_in user
 
   click_button 'Sign In'
 end
+
+def create_signed_in( factory )
+  resource = FactoryGirl.create( factory )
+  sign_in(resource)
+  resource
+end
