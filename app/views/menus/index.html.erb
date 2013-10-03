@@ -1,7 +1,7 @@
 
 <ul>
   <% @menus.each do | menu | %>
-   <%= content_tag :li, menu.name %>
+   <li><%= link_to menu.name, menu_menu_items_path(menu) %></li>
   <% end %>
   <li>
     <%= simple_form_for @new_menu, url: restaurant_menus_path do |form| %>

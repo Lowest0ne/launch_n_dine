@@ -8,7 +8,9 @@ LaunchNDine::Application.routes.draw do
     resources :menus, only: [:new, :create, :index]
   end
 
-  resources :menus, only: [:show]
+  resources :menus, only: [:show] do
+    resources :menu_items, only: [:index, :create]
+  end
 
   root 'pages#index'
 
