@@ -7,12 +7,12 @@ class MenusController < ApplicationController
   def index
     @restaurant = Restaurant.find( params[:restaurant_id] )
     @menus = @restaurant.menus
-    @new_menu = @restaurant.menus.build
+    @new_menu = Menu.new
   end
 
   def create
     restaurant = Restaurant.find( params[:restaurant_id] )
-    @menu = restaurant.menus.new( menu_params )
+    @menu = restaurant.menus.build( menu_params )
     if @menu.save
       redirect_to restaurant_menus_path( restaurant ),  notice: 'Menu Added'
     else
