@@ -24,8 +24,20 @@
 
     <%= render 'layouts/nav' %>
     <%= flash[:alert] %>
-    <%= yield %>
 
+    <div class="row">
+      <div class="small-3 large-3 columns" style="background-color: #BBBBBB">
+        <p>Text</p>
+      </div>
+      <div class="small-9 large-9 columns">
+        <%= yield %>
+      </div>
+    </div>
+    <% if Rails.env != 'production' %>
+      <div style='background-color:#BBBBBB'>
+        <%= params %>
+      </div>
+    <% end %>
 
     <%= javascript_include_tag "application" %>
   </body>
