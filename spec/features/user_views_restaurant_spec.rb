@@ -12,10 +12,7 @@ feature 'user views restaurant' do
     click_on restaurant.name
 
     page.should have_content( restaurant.name )
-
-    restaurant.menus.each do |menu|
-      page.should have_content( menu.name )
-    end
+    page.should have_content( 'Menus' )
 
   end
 

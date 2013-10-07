@@ -1,5 +1,2 @@
 <%= content_tag :h1, @restaurant.name %>
-
-<% @restaurant.menus.each do |menu| %>
-  <%= content_tag :p, menu.name %>
-<% end %>
+<%= link_to 'Menus', restaurant_menus_path( @restaurant ) %>
