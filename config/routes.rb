@@ -10,7 +10,10 @@ LaunchNDine::Application.routes.draw do
 
   resources :menus, only: [:show] do
     resources :menu_items, only: [:index, :create]
+    resources :orders, only: [:new, :create]
   end
+
+  resources :orders, only: [:show]
 
   root 'pages#index'
 

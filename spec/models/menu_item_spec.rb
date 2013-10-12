@@ -13,5 +13,6 @@ describe MenuItem do
 
   it { should belong_to( :menu ) }
   it { should have_many( :order_items ) }
+  it { should have_many( :orders ).through( :order_items ) }
 
 end

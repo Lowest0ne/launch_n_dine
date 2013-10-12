@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
   validates_inclusion_of :role, in: [ 'driver', 'customer', 'owner' ]
 
   has_many :restaurants, inverse_of: :user
-  has_many :purchases, class_name: 'Order', foreign_key: 'customer_id'
-  has_many :deliveries, class_name: 'Order', foreign_key: 'driver_id'
+  has_many :purchases, class_name: 'Order', foreign_key: 'customer_id',
+            inverse_of: :customer
+  has_many :deliveries, class_name: 'Order', foreign_key: 'driver_id',
+            inverse_of: :driver
 
   has_many :locations, as: :findable, inverse_of: :findable
 
