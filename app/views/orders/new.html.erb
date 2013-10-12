@@ -1,0 +1,11 @@
+<h3>Create an Order</h3>
+
+<%= form_for [@menu, @order] do |form| %>
+  <%= form.fields_for :order_items do |items_form| %>
+    <%= items_form.select :menu_item_id,
+                    options_from_collection_for_select( @menu.menu_items, :id, :name ),
+                    include_blank: true %>
+  <% end %>
+  <%= form.submit 'Create Order' %>
+<% end %>
+

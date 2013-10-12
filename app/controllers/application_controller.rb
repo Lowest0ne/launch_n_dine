@@ -15,7 +15,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
       if resource.is_a?(User)
-        user_path(resource)
+        case resource.role
+        when 'owner'
+          user_path(resource)
+        when 'customer'
+          restaurants_path
+        end
       else
         super
       end
