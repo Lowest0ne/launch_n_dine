@@ -23,6 +23,10 @@ class OrdersController < ApplicationController
     @order = Order.find( params[:id] )
   end
 
+  def index
+    @orders = Order.all
+  end
+
   protected
   def order_params
     params.require(:order).permit( order_items_attributes: [:menu_item_id] )

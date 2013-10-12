@@ -13,7 +13,7 @@ LaunchNDine::Application.routes.draw do
     resources :orders, only: [:new, :create]
   end
 
-  resources :orders, only: [:show]
+  resources :orders, only: [:show, :index]
 
   root 'pages#index'
 
