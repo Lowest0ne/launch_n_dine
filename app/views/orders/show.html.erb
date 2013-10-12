@@ -1,0 +1,7 @@
+<%= content_tag :h3, "Here's your order #{@order.customer.first_name}" %>
+<%= content_tag :h4, @order.restaurant.name %>
+<ul>
+  <% @order.menu_items.each do |menu_item| %>
+    <%= content_tag :li, menu_item.name %>
+  <% end %>
+</ul>

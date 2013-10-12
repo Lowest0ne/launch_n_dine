@@ -10,3 +10,5 @@
   <%= form.input :price, label: false, placeholder: 'Price' %>
   <%= form.submit 'Create Menu Item' %>
 <% end %>
+
+<%= link_to 'Create Order', new_menu_order_path(@menu) %>
