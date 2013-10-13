@@ -3,11 +3,11 @@
   <% @menus.each do | menu | %>
    <li><%= link_to menu.name, menu_menu_items_path(menu) %></li>
   <% end %>
-  <li>
-    <%= simple_form_for @new_menu, url: restaurant_menus_path do |form| %>
-      <%= form.input :name, label: false, placeholder: 'menu name' %>
-      <%= form.button :submit, 'Add Menu' %>
-    <% end %>
-  </li>
-
 </ul>
+
+<% if current_user && @restaurant.user == current_user %>
+  <%= simple_form_for @menu, url: restaurant_menus_path do |form| %>
+    <%= form.input :name, label: false, placeholder: 'menu name' %>
+    <%= form.button :submit, 'Add Menu' %>
+  <% end %>
+<% end %>
