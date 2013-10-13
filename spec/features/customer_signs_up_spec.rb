@@ -17,14 +17,17 @@ feature 'customer signs up' do
     page.should_not have_content('Restaurant State')
     page.should_not have_content('Restaurant Name')
 
-    fill_in 'user_first_name', with: 'Carl'
-    fill_in 'user_last_name', with: 'Schwope'
-    fill_in 'user_locations_attributes_0_street', with: '40 Beacon St.'
-    fill_in 'user_locations_attributes_0_city', with: 'Chelsea'
-    fill_in 'user_locations_attributes_0_state', with: 'MA'
-    fill_in 'user_email', with: 'schwope.carl@gmail.com'
-    fill_in 'user_password', with: 'password'
-    fill_in 'user_password_confirmation', with: 'password'
+    customer = FactoryGirl.build(:customer)
+    location = FactoryGirl.build(:location, findable: customer )
+
+    fill_in 'user_first_name', with: customer.first_name
+    fill_in 'user_last_name', with: customer.last_name
+    fill_in 'user_locations_attributes_0_street', with: location.street
+    fill_in 'user_locations_attributes_0_city', with: location.city
+    fill_in 'user_locations_attributes_0_state', with: location.state
+    fill_in 'user_email', with: customer.email
+    fill_in 'user_password', with: customer.password
+    fill_in 'user_password_confirmation', with: customer.password
 
     click_button 'Sign Up'
 
