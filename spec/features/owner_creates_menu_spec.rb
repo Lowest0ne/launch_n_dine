@@ -33,38 +33,35 @@ describe 'creating a menu' do
 
   describe 'the true owner' do
 
-    it 'povides valid info and is told of success' do
-      owner = create_signed_in(:owner)
-      restaurant = FactoryGirl.create(:restaurant, user: owner)
-      menu = FactoryGirl.build( :menu )
+    let (:owner) { create_signed_in(:owner) }
 
+    before(:each) do
+      @restaurant = FactoryGirl.create(:restaurant, user: owner )
       visit user_path(owner)
-      click_link restaurant.name
+      click_link @restaurant.name
+    end
+
+    it 'povides valid info and is told of success' do
+      menu = FactoryGirl.build( :menu )
 
       fill_in 'menu_name', with: menu.name
 
-      prev_count = restaurant.menus.count
+      prev_count = @restaurant.menus.count
       click_button 'Add Menu'
 
       page.should have_content('Menu Added')
       page.should have_content( menu.name )
 
-      expect( restaurant.menus.count ).to eql( prev_count + 1)
+      @restaurant.menus.count.should == prev_count + 1
     end
 
     it 'does not provide correct info' do
-      owner = create_signed_in(:owner)
-      restaurant = FactoryGirl.create(:restaurant, user: owner)
-      menu = FactoryGirl.build( :menu )
 
-      visit user_path(owner)
-      click_link restaurant.name
-
-      prev_count = restaurant.menus.count
+      prev_count = @restaurant.menus.count
       click_button 'Add Menu'
 
+      Menu.count.should == prev_count
       page.should_not have_content('Menu Added')
-      page.should_not have_content( menu.name )
       page.should have_content("can't be blank")
     end
   end
