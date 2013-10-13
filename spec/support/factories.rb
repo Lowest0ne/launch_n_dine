@@ -2,6 +2,7 @@
 FactoryGirl.define do
 
 
+=begin
   factory :user do
     first_name 'Carl'
     last_name 'Schwope'
@@ -41,7 +42,6 @@ FactoryGirl.define do
       FactoryGirl.create(:location, findable: restaurant)
     end
   end
-
   factory :menu do
     sequence(:name){|n|"menu#{n}"}
     after(:create) do |menu|
@@ -53,6 +53,49 @@ FactoryGirl.define do
     sequence(:name){|n|"menu_item#{n}"}
     description 'very good description'
     sequence(:price){|n| n / 4.0 }
+  end
+=end
+
+  factory :user do
+    first_name 'Carl'
+    last_name 'Schwope'
+    sequence(:email){|n|"email#{n}@example.com"}
+    password 'my_password'
+
+    factory :customer do
+      role 'customer'
+    end
+
+    factory :driver do
+      role 'driver'
+    end
+
+    factory :owner do
+      role 'owner'
+    end
+
+    after(:create) do |user|
+      FactoryGirl.create(:location, findable: user )
+    end
+
+  end
+  factory :restaurant do
+    sequence(:name){|n|"restaurant#{n}"}
+  end
+
+  factory :menu do
+    sequence(:name){|n|"menu#{n}"}
+  end
+
+  factory :menu_item do
+    sequence(:name){|n|"menu_item#{n}"}
+    description 'very good description'
+    sequence(:price){|n| n / 4.0 }
+  end
+  factory :location do
+    sequence(:street){|n|"#{n} Harrison Ave"}
+    city 'Boston'
+    state 'MA'
   end
 
 end

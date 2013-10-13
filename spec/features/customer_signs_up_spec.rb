@@ -47,6 +47,7 @@ feature 'customer signs up' do
   scenario 'with invalid information' do
 
     total_count = User.count
+    ActionMailer::Base.deliveries = []
 
     visit root_path
     click_link 'Sign Up'
@@ -59,7 +60,7 @@ feature 'customer signs up' do
     page.should have_content('Sign Up')
     page.should_not have_content('Sign Out')
 
+    expect( ActionMailer::Base.deliveries.size).to eql(0)
+    last_email = ActionMailer::Base.deliveries.last
   end
-
-
 end

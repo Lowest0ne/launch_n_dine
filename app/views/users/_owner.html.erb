@@ -5,3 +5,4 @@
               link_to(restaurant.name, restaurant_menus_path(restaurant)),
               class: 'left' %>
 <% end %>
+<%= link_to 'Add Restaurant', new_user_restaurant_path(current_user) %>
