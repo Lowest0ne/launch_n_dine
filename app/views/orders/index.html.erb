@@ -1,0 +1,12 @@
+
+<ol>
+<% @orders.each do |order| %>
+  <li>
+    <p><%= order.restaurant.name %></p>
+    <p><%= order.restaurant.location.street %></p>
+    <p><%= order.restaurant.location.city %></p>
+    <p><%= order.customer.location.street %></p>
+    <p><%= order.customer.location.city %></p>
+  </li>
+<% end %>
+</ol>

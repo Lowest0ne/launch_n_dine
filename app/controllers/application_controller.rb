@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
           user_path(resource)
         when 'customer'
           restaurants_path
+        when 'driver'
+          orders_path
         end
       else
         super
