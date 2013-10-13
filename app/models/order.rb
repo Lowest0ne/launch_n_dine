@@ -23,4 +23,39 @@ class Order < ActiveRecord::Base
               inverse_of: :orders
 
   accepts_nested_attributes_for :order_items
+
+  validates_presence_of :state
+
+  state_machine :state, initial: :requested do
+    state :requested
+    state :confirmed
+    state :readied
+    state :picked_up
+    state :completed
+    state :canceled
+
+    event :confirm do
+      transition requested: :confirmed
+    end
+
+    event :ready do
+      transition confirmed: :readied
+    end
+
+    event :pick_up do
+      transition readied: :picked_up
+    end
+
+    event :complete do
+      transition picked_up: :completed
+    end
+
+    event :cancel do
+      transition requested: :canceled
+      transition confirmed: :canceled
+      transition readied:   :canceled
+      transition picked_up: :canceled
+    end
+
+  end
 end
