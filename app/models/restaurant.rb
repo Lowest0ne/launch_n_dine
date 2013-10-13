@@ -9,4 +9,9 @@ class Restaurant < ActiveRecord::Base
   has_many :locations, as: :findable, inverse_of: :findable
 
   accepts_nested_attributes_for :locations
+
+  def location
+    locations.first
+  end
+
 end

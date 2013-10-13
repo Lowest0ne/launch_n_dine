@@ -1,6 +1,7 @@
 
 FactoryGirl.define do
 
+
   factory :user do
     first_name 'Carl'
     last_name 'Schwope'
@@ -15,6 +16,11 @@ FactoryGirl.define do
         FactoryGirl.create_list( :restaurant, 2 , user: owner )
       end
     end
+
+    factory :driver do
+      role 'driver'
+    end
+
     after(:create) do |user|
       FactoryGirl.create(:location, findable: user)
     end
@@ -29,11 +35,9 @@ FactoryGirl.define do
 
   factory :restaurant do
     sequence(:name){|n|"restaurant#{n}"}
-    after(:create) do |restaurant|
-      FactoryGirl.create_list(:menu, 2 , restaurant: restaurant )
-    end
 
     after(:create) do |restaurant|
+      FactoryGirl.create_list(:menu, 2 , restaurant: restaurant )
       FactoryGirl.create(:location, findable: restaurant)
     end
   end
@@ -50,4 +54,5 @@ FactoryGirl.define do
     description 'very good description'
     sequence(:price){|n| n / 4.0 }
   end
+
 end

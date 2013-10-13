@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
 
   after_create :send_registration_email
 
+  def location
+    locations.first
+  end
+
   private
   def send_registration_email
     case self.role
