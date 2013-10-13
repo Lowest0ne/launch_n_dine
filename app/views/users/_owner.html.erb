@@ -1,8 +1,9 @@
 
 <h3>My Restaurants</h3>
-<% @user.restaurants.each do | restaurant | %>
+<ul>
+<% current_user.restaurants.each do | restaurant | %>
   <%= content_tag :li,
-              link_to(restaurant.name, restaurant_menus_path(restaurant)),
-              class: 'left' %>
+              link_to(restaurant.name, restaurant_menus_path(restaurant)) %>
 <% end %>
+</ul>
 <%= link_to 'Add Restaurant', new_user_restaurant_path(current_user) %>

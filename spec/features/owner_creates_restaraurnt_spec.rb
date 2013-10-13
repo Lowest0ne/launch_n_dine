@@ -8,7 +8,6 @@ describe 'creating a restaurant' do
       user = create_signed_in(:customer)
       visit new_user_restaurant_path(user)
       current_path.should == root_path
-      page.should_not have_content('Create Restaurant')
 
     end
 
@@ -17,7 +16,6 @@ describe 'creating a restaurant' do
       user = create_signed_in(:driver)
       visit new_user_restaurant_path(user)
       current_path.should == root_path
-      page.should_not have_content('Create Restaurant')
 
     end
 
@@ -26,9 +24,13 @@ describe 'creating a restaurant' do
       user = FactoryGirl.create(:customer)
       visit new_user_restaurant_path(user)
       current_path.should == new_user_session_path
-      page.should_not have_content('Create Restaurant')
 
     end
+
+    after(:each) do
+      page.should_not have_content('Create Restaurant')
+    end
+
   end
 
   describe 'an owner' do
@@ -83,11 +85,6 @@ describe 'creating a restaurant' do
         Restaurant.count.should == restaurant_count
 
       end
-
-
-
     end
-
-
   end
 end

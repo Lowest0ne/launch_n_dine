@@ -1,2 +1,2 @@
-
-<%= render partial: 'owner', object: @user if @user.role == 'owner' %>
+<%= content_tag :h3, current_user.full_name %>
+<%= render partial: 'owner', object: current_user if current_user.role == 'owner' %>
