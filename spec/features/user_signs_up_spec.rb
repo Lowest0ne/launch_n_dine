@@ -49,6 +49,22 @@ describe 'a user signing up' do
       user.last_name.should == customer.last_name
       user.email.should == customer.email
     end
+  end
 
+  describe 'with invalid information' do
+    before (:each) do
+      @prev_count = User.count
+      visit root_path
+      click_on 'Customer'
+      click_button 'Sign Up'
+    end
+
+    it 'does not store info in the database' do
+      User.count.should == @prev_count
+    end
+
+    subject{ page }
+    it { should_not have_content('Sign Out') }
+    it { should have_content("can't be blank") }
   end
 end

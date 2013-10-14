@@ -3,21 +3,21 @@ LaunchNDine::Application.routes.draw do
     controllers: { registrations: 'launch/registrations' }
 
   resources :users, only: [:show] do
-    resources :locations, only: [:new, :create, :update]
+    resources :locations,   only: [:new, :create, :update]
     resources :restaurants, only: [:new, :create]
-    resources :orders, only: [:index]
+    resources :orders,      only: [:index]
   end
 
   resources :locations, only: [:show, :edit, :index, :destroy]
 
-  resources :restaurants, only: [:index, :show, :edit, :update] do
-    resources :menus, only: [:new, :create, :index]
-    resources :orders, only: [:index]
+  resources :restaurants, except: [:new, :create] do
+    resources :menus,     only: [:new, :create, :index]
+    resources :orders,    only: [:index]
   end
 
   resources :menus, only: [:show] do
     resources :menu_items, only: [:index, :create]
-    resources :orders, only: [:new, :create]
+    resources :orders,     only: [:new, :create]
   end
 
   resources :orders, only: [:show, :index]

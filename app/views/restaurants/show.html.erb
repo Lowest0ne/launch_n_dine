@@ -12,7 +12,7 @@
     <% if @restaurant.user == current_user %>
       <%= link_to 'View Orders', '#' %>
       <%= link_to 'Edit',   edit_restaurant_path( @restaurant ) %>
-      <%= link_to 'Delete', '#' %>
+      <%= link_to 'Delete', restaurant_path( @restaurant ), method: :delete %>
     <% end %>
   <% end %>
 <% end %>
