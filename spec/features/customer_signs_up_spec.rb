@@ -12,6 +12,7 @@ feature 'customer signs up' do
     visit root_path
     click_link 'Customer'
 
+    page.should_not have_selector(:input, id: 'user_restaurants_attributes_0_name')
     page.should_not have_content('Restaurant Street')
     page.should_not have_content('Restaurant City')
     page.should_not have_content('Restaurant State')
@@ -33,6 +34,7 @@ feature 'customer signs up' do
 
     expect( User.count ).to eql( total_count + 1 )
     expect( User.where( role: 'customer' ).count ).to eql( customer_count + 1)
+    User.last.location.should_not == nil
 
     page.should have_content('Sign Out')
     page.should_not have_content('Sign In')

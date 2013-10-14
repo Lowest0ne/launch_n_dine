@@ -8,22 +8,34 @@ feature 'restaurant owner signs up' do
 
     prev_count = User.where( role: 'owner').count
 
+    owner = FactoryGirl.build(:owner)
+    restaurant = FactoryGirl.build(:restaurant)
+    location = FactoryGirl.build(:location)
+
     visit root_path
     click_on 'Owner'
-    fill_in 'user_first_name', with: 'Carl'
-    fill_in 'user_last_name', with: 'Schwope'
-    fill_in 'user_email', with: 'schwope.carl@gmail.com'
-    fill_in 'user_password', with: 'my_password'
-    fill_in 'user_password_confirmation', with: 'my_password'
+    fill_in 'user_first_name', with: owner.first_name
+    fill_in 'user_last_name', with: owner.last_name
+    fill_in 'user_email', with: owner.email
+    fill_in 'user_password', with: owner.password
+    fill_in 'user_password_confirmation', with: owner.password
 
-    fill_in 'user_restaurants_attributes_0_name', with: 'Breakfast With Carl'
-    fill_in 'user_restaurants_attributes_0_locations_attributes_0_street', with: '33 Harrison Ave'
-    fill_in 'user_restaurants_attributes_0_locations_attributes_0_city', with: 'Boston'
-    fill_in 'user_restaurants_attributes_0_locations_attributes_0_state', with: 'Massachusetts'
+    restaurant_str = "user_restaurants_#{owner.id}_"
+    fill_in "#{restaurant_str}name", with: restaurant.name
+    fill_in "#{restaurant_str}_location__street", with: location.street
+    fill_in "#{restaurant_str}_location__city", with: location.city
+    fill_in "#{restaurant_str}_location__state", with: location.state
 
     click_button 'Sign Up'
 
     expect( User.where( role: 'owner' ).count ).to eql( prev_count + 1 )
+
+    owner = User.last
+    owner.restaurants.first.name.should == restaurant.name
+    owner.restaurants.first.locations.first.street.should == location.street
+    owner.restaurants.first.locations.first.city.should == location.city
+    owner.restaurants.first.locations.first.state.should == locations.state
+
 
     page.should have_content("Welcome to Launch 'n Dine")
     page.should have_content("Sign Out")

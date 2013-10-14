@@ -1,6 +1,6 @@
-<h1>All The Restaurants</h1>
 <% @restaurants.each do |restaurant| %>
-  <%= content_tag :p,
-      link_to(restaurant.name,
-              restaurant_menus_path( restaurant )) %>
+  <%= link_to restaurant.name, restaurant_path( restaurant )%>
+<% end %>
+<% if current_user && current_user.is_owner? %>
+  <%= link_to 'Add Restaurant', new_user_restaurant_path( current_user ) %>
 <% end %>

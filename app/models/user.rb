@@ -31,6 +31,22 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def is_driver?
+    self.role == 'driver'
+  end
+
+  def is_customer?
+    self.role == 'customer'
+  end
+
+  def is_owner?
+    self.role == 'owner'
+  end
+
+  def is_me?( id )
+    self.id == id
+  end
+
   private
   def send_registration_email
     case self.role

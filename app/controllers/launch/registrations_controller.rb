@@ -10,6 +10,7 @@ class Launch::RegistrationsController < Devise::RegistrationsController
         self.resource.restaurants.last.locations.build
       when 'customer' then
         self.resource.locations.build
+        self.resource.locations.build
     end
 
     respond_with self.resource

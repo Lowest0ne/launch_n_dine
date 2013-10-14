@@ -39,6 +39,7 @@ describe 'creating a menu' do
       @restaurant = FactoryGirl.create(:restaurant, user: owner )
       visit user_path(owner)
       click_link @restaurant.name
+      click_link 'Menus'
     end
 
     it 'povides valid info and is told of success' do
