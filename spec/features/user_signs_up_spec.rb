@@ -29,6 +29,8 @@ describe 'a user signing up' do
 
       @prev_count = User.count
 
+      ActionMailer::Base.deliveries = []
+
       fill_in 'user_first_name', with: customer.first_name
       fill_in 'user_last_name', with: customer.last_name
       fill_in 'user_email', with: customer.email
@@ -48,6 +50,17 @@ describe 'a user signing up' do
       user.first_name.should == customer.first_name
       user.last_name.should == customer.last_name
       user.email.should == customer.email
+    end
+
+    it 'delivers an email to the correct person' do
+
+      expect( ActionMailer::Base.deliveries.size).to eql(1)
+      last_email = ActionMailer::Base.deliveries.last
+
+      expect( last_email ).to have_subject("Launch 'n Dine Welcomes You")
+      expect( last_email ).to deliver_to( User.last.email )
+      expect( last_email ).to have_body_text("Thanks for being a customer")
+
     end
   end
 
