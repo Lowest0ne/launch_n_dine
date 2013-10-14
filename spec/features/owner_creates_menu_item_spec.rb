@@ -5,9 +5,9 @@ describe 'adding a menu item' do
   describe 'users can not' do
 
     before(:each) do
-      FactoryGirl.create(:owner)
-      FactoryGirl.create(:restaurant, user: User.last)
-      FactoryGirl.create(:menu, restaurant: Restaurant.last )
+      owner = FactoryGirl.create(:owner)
+      restaurant = FactoryGirl.create(:restaurant, user: owner )
+      menu = FactoryGirl.create(:menu, restaurant: restaurant )
     end
 
     it 'when not signed in' do

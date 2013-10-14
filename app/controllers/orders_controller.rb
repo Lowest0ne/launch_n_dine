@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_filter :authenticate_user!, only: [:index]
 
   def new
     @menu = Menu.find( params[:menu_id] )
@@ -24,7 +25,16 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    if !current_user || current_user.role == 'customer'
+      redirect_to root_path
+    elsif params[:restaurant_id]
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      redirect_to root_path if current_user.role == 'owner' && @restaurant.user != current_user
+      @orders = Order.where( restaurant: @restaurant )
+    else
+      @orders = Order.all
+    end
+
   end
 
   protected

@@ -18,7 +18,10 @@ describe Order do
 
   it 'must have at least one order_item' do
     FactoryGirl.create(:owner)
-    FactoryGirl.create(:user)
+    FactoryGirl.create(:restaurant, user: User.last)
+    FactoryGirl.create(:menu, restaurant: Restaurant.last)
+    FactoryGirl.create(:menu_item, menu: Menu.last)
+    FactoryGirl.create(:customer)
 
     order = Order.new
     order.restaurant = Restaurant.first
@@ -34,7 +37,10 @@ describe Order do
   describe 'states' do
       let (:order) {
         FactoryGirl.create(:owner)
-        FactoryGirl.create(:user)
+        FactoryGirl.create(:restaurant, user: User.last)
+        FactoryGirl.create(:menu, restaurant: Restaurant.last)
+        FactoryGirl.create(:menu_item, menu: Menu.last)
+        FactoryGirl.create(:customer)
 
         order = Order.new(customer: User.first,
                           restaurant: Restaurant.first)

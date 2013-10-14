@@ -4,8 +4,11 @@ feature 'user views menus' do
 
   scenario 'an owner has the option to create another' do
 
-    owner = create_signed_in(:owner)
-    restaurant = owner.restaurants.first
+    owner = FactoryGirl.create(:owner)
+    restaurant = FactoryGirl.create(:restaurant, user: owner)
+    menu = FactoryGirl.create_list(:menu, 3, restaurant: restaurant)
+
+    sign_in( owner )
 
     click_link restaurant.name
 
@@ -19,8 +22,9 @@ feature 'user views menus' do
 
   scenario 'a visitor can not add a menu' do
     FactoryGirl.create(:owner)
+    FactoryGirl.create(:restaurant, user: User.last)
 
-    visit restaurant_menus_path( Restaurant.first )
+    visit restaurant_menus_path( Restaurant.last )
 
     page.should_not have_selector('input', value: 'Add Menu' )
   end

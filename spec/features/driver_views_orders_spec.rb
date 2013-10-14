@@ -4,16 +4,14 @@ feature 'driver views orders' do
 
   scenario 'it can be done' do
 
-    user = FactoryGirl.create(:user)
-    FactoryGirl.create(:owner)
+    customer = FactoryGirl.create(:customer)
+    owner = FactoryGirl.create(:owner)
+    restaurant = FactoryGirl.create(:restaurant, user: owner)
+    menu = FactoryGirl.create(:menu, restaurant: restaurant)
+    menu_item = FactoryGirl.create(:menu_item, menu: menu )
 
-    restaurant = Restaurant.first
-    menu = Menu.where( restaurant_id: restaurant.id ).first
-    item = menu.menu_items.first
-
-    order = Order.new( customer: User.first, restaurant: restaurant)
-
-    order.order_items.build( menu_item: item )
+    order = Order.new( customer: customer, restaurant: restaurant)
+    order.order_items.build( menu_item: menu_item )
     order.save
 
     expect( Order.count ).to_not eql(0)
@@ -23,8 +21,8 @@ feature 'driver views orders' do
     page.should have_content( restaurant.name )
     page.should have_content( restaurant.location.street )
     page.should have_content( restaurant.location.city )
-    page.should have_content( user.location.street )
-    page.should have_content( user.location.city )
+    page.should have_content( customer.location.street )
+    page.should have_content( customer.location.city )
 
   end
 end

@@ -10,7 +10,7 @@ feature 'driver signs up' do
     driver_count = User.where( role: 'driver' ).count
 
     visit root_path
-    click_link 'Driver?'
+    click_link 'Driver'
 
     fill_in "user_first_name", with: 'Carl'
     fill_in 'user_last_name', with: 'Schwope'
@@ -39,7 +39,7 @@ feature 'driver signs up' do
 
     total_count = User.count
     visit root_path
-    click_link 'Driver?'
+    click_link 'Driver'
 
     click_button 'Sign Up'
 

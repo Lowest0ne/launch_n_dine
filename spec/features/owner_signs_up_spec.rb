@@ -9,7 +9,7 @@ feature 'restaurant owner signs up' do
     prev_count = User.where( role: 'owner').count
 
     visit root_path
-    click_on 'Restaurant Owner?'
+    click_on 'Owner'
     fill_in 'user_first_name', with: 'Carl'
     fill_in 'user_last_name', with: 'Schwope'
     fill_in 'user_email', with: 'schwope.carl@gmail.com'

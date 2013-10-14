@@ -4,10 +4,12 @@ LaunchNDine::Application.routes.draw do
 
   resources :users, only: [:show] do
     resources :restaurants, only: [:new, :create]
+    resources :orders, only: [:index]
   end
 
   resources :restaurants, only: [:index, :show] do
     resources :menus, only: [:new, :create, :index]
+    resources :orders, only: [:index]
   end
 
   resources :menus, only: [:show] do

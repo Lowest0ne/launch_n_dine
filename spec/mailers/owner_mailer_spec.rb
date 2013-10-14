@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe OwnerMailer do
   describe "registration" do
-    let(:new_user) { FactoryGirl.create(:user) }
+    let(:new_user) { FactoryGirl.create(:owner) }
     let(:mail) { OwnerMailer.registration(new_user) }
 
     it "renders the headers" do

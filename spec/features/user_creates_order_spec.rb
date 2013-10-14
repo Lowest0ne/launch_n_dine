@@ -7,13 +7,13 @@ feature 'creating orders' do
     before :each do
       @prev_count = Order.count
       owner = FactoryGirl.create(:owner)
-      @restaurant = owner.restaurants.first
-      @menu = @restaurant.menus.first
-      @menu_item = @menu.menu_items.first
+      @restaurant = FactoryGirl.create(:restaurant, user: owner)
+      @menu = FactoryGirl.create(:menu, restaurant: @restaurant)
+      @menu_item = FactoryGirl.create(:menu_item, menu: @menu)
+      create_signed_in(:customer)
     end
 
     it 'creates an order if form filled correctly' do
-      user = create_signed_in(:user)
 
       click_on @restaurant.name
       click_on @menu.name
@@ -30,7 +30,6 @@ feature 'creating orders' do
     end
 
     it 'does not create an order if form is empty' do
-      user = create_signed_in(:user)
 
       click_on @restaurant.name
       click_on @menu.name

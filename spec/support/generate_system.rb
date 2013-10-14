@@ -1,22 +1,19 @@
 require 'spec_helper'
 
-def generate_system
+def generate_restaurants
 
-  owner = FactoryGirl.create(:owner)
-  customer = FactoryGirl.create(:user)
-  driver = FactoryGirl.create(:driver)
+  # create 2 restaurants capable of having orders
+  FactoryGirl.create_list( :owner, 4 )
+  User.where(role: 'owner').each do |owner|
+    FactoryGirl.create(:restaurant, user:owner )
+  end
 
+  Restaurant.all.each do |restaurant|
+    FactoryGirl.create( :menu, restaurant: restaurant )
+  end
 
-  5.times do
-
-    menu_item = MenuItem.all.sample
-    customer = User.where( role: 'customer').sample
-    restaurant = menu_item.menu.restaurant
-
-    order = Order.new( customer: customer, restaurant: restaurant )
-    order.order_items.build( menu_item: menu_item )
-
-    order.save
+  Menu.all.each do |menu|
+    FactoryGirl.create_list( :menu_item, 4,  menu: menu )
   end
 
 end

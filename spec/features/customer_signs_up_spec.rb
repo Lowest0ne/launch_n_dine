@@ -10,7 +10,7 @@ feature 'customer signs up' do
     customer_count = User.where( role: 'customer').count
 
     visit root_path
-    click_link 'Sign Up'
+    click_link 'Customer'
 
     page.should_not have_content('Restaurant Street')
     page.should_not have_content('Restaurant City')
@@ -53,7 +53,7 @@ feature 'customer signs up' do
     ActionMailer::Base.deliveries = []
 
     visit root_path
-    click_link 'Sign Up'
+    click_link 'Customer'
 
     click_button 'Sign Up'
 

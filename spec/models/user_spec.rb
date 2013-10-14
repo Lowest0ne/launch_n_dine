@@ -14,9 +14,11 @@ describe User do
 
   it { should have_many(:locations) }
 
+  [:customer, :driver, :owner].each do |role|
   it 'sends an email after registration' do
     prev_count = ActionMailer::Base.deliveries.count
-    FactoryGirl.create(:user)
+    FactoryGirl.create(role)
     expect( ActionMailer::Base.deliveries.count ).to eql( prev_count + 1 )
+  end
   end
 end
