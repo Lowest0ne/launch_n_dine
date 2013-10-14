@@ -42,8 +42,8 @@ FactoryGirl.define do
 
   factory :location do
     sequence(:street){|n|"#{n} Harrison Ave"}
-    city 'Boston'
-    state 'MA'
+    sequence(:city){|n|"City: #{n}"}
+    sequence(:state){|n|"State: #{n}" }
   end
 
 end

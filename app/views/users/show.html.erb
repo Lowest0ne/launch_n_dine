@@ -1,2 +1,4 @@
 <%= content_tag :h3, current_user.full_name %>
+<%= link_to 'Add Location', new_user_location_path( current_user ) %>
+<%= link_to 'View Locations', locations_path %>
 <%= render partial: 'owner', object: current_user if current_user.role == 'owner' %>

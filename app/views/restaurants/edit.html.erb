@@ -1,6 +1,7 @@
 <%= simple_form_for @restaurant do |form| %>
   <%= form.input :name %>
-  <%= render partial: 'locations/form',
-      locals: { f: form, locations: @restaurant.locations } %>
+  <%= form.simple_fields_for :locations do |location_form| %>
+
+  <% end %>
   <%= form.submit %>
 <% end %>

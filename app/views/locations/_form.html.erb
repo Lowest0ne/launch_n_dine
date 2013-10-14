@@ -1,5 +1,9 @@
-<%= form. :locations do |location_form| %>
-  <%= location_form.input :street, label: false, placeholder: 'Street', required: true %>
-  <%= location_form.input :city, label: false, placeholder: 'City', required: true %>
-  <%= location_form.input :state, label: false, placeholder: 'State', required: true %>
+<% @location.errors.full_messages.each do |message| %>
+ <%= content_tag :p, message %>
+<% end %>
+<%= simple_form_for [@user, @location] do |form| %>
+  <%= form.input :street %>
+  <%= form.input :city %>
+  <%= form.input :state %>
+  <%= form.submit %>
 <% end %>
