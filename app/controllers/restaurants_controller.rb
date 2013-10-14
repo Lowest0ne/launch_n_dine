@@ -50,6 +50,7 @@ class RestaurantsController < ApplicationController
   def update
 
     @restaurant = Restaurant.find( params[:id] )
+    redirect_to root_path unless @restaurant.user == current_user
     if @restaurant.update( restaurant_params )
       redirect_to @restaurant, notice: 'Restaurant Updated'
     else
@@ -60,7 +61,7 @@ class RestaurantsController < ApplicationController
   private
   def restaurant_params
     params.require(:restaurant).permit(:name,
-      locations_attributes: [:street, :city, :state]
+      locations_attributes: [:id, :street, :city, :state]
     )
   end
 

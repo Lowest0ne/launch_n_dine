@@ -37,24 +37,34 @@ describe 'edititing a restaurant' do
     end
 
     it 'can be done with valid information' do
-      new_restaurant = FactoryGirl.build(:restaurant, user: @owner )
-      location = FactoryGirl.build(:location)
 
-      location_str = "restaurant_location_#{@restaurant.location.id}"
-      fill_in 'restaurant_name', with: new_restaurant.name
-      fill_in "#{location_str}_street", with: location.street
-      fill_in "#{location_str}_city", with: location.city
-      fill_in "#{location_str}_state", with: location.state
+      location_str = "restaurant_locations_attributes_0_"
+      fill_in 'restaurant_name', with: 'diff1'
+      fill_in "#{location_str}street", with: 'diff2'
+      fill_in "#{location_str}city", with: 'diff3'
+      fill_in "#{location_str}state", with: 'diff4'
       click_on 'Update Restaurant'
 
       page.should have_content('Restaurant Updated')
-      @restaurant.name.should == new_restaurant.name
-      @restaurant.location.street.should == location.street
-      @restaurant.location.city.should == location.city
-      @restaurant.location.state.should == location.state
+      @restaurant.reload
+      @restaurant.name.should == 'diff1'
+      @restaurant.location.street.should == 'diff2'
+      @restaurant.location.city.should == 'diff3'
+      @restaurant.location.state.should == 'diff4'
     end
 
-    it 'can not be done with invalid information'
+    it 'can not be done with invalid information' do
+      location_str = "restaurant_locations_attributes_0_"
+      fill_in 'restaurant_name', with: ''
+      fill_in "#{location_str}street", with: ''
+      fill_in "#{location_str}city", with: ''
+      fill_in "#{location_str}state", with: ''
+      click_on 'Update Restaurant'
+
+      page.should_not have_content('Restaurant Updated')
+      page.should have_content("can't be blank")
+    end
+
   end
 
 end
