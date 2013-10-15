@@ -11,11 +11,11 @@ LaunchNDine::Application.routes.draw do
   resources :locations, only: [:show, :edit, :index, :destroy]
 
   resources :restaurants, except: [:new, :create] do
-    resources :menus,     only: [:new, :create, :index]
+    resources :menus,     only: [:new, :create, :index, :update]
     resources :orders,    only: [:index]
   end
 
-  resources :menus, only: [:show] do
+  resources :menus, only: [:show, :edit, :update, :destroy] do
     resources :menu_items, only: [:index, :create]
     resources :orders,     only: [:new, :create]
   end

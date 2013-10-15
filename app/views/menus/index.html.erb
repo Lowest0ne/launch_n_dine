@@ -1,7 +1,13 @@
 <p><%= "Menus for #{@restaurant.name}" %>
 <ul>
   <% @menus.each do | menu | %>
-   <li><%= link_to menu.name, menu_menu_items_path(menu) %></li>
+   <li>
+    <%= link_to menu.name, menu_menu_items_path(menu) %>
+    <% if @restaurant.user == current_user %>
+      <%= link_to 'Edit', edit_menu_path( menu ) %>
+      <%= link_to 'Delete', menu_path( menu ), method: :delete %>
+    <% end %>
+  </li>
   <% end %>
 </ul>
 
