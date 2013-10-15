@@ -1,6 +1,8 @@
 # Launch 'n Dine
 ### An autonomous food delivery service
 [![TravisTest](https://travis-ci.org/Lowest0ne/launch_n_dine.png)](https://travis-ci.org/Lowest0ne/launch_n_dine.png)
+[![CodeClimate](https://d3s6mut3hikguw.cloudfront.net/github/Lowest0ne/launch_n_dine.png)](https://d3s6mut3hikguw.cloudfront.net/github/Lowest0ne/launch_n_dine.png)
+
 ### How to use
 * fork and clone
 * bundle
