@@ -37,6 +37,7 @@ describe 'a profile page' do
     before ( :each ) do
       sign_in( owner )
       visit user_path( owner )
+      click_on 'My Restaurants'
     end
 
     it 'contains the name of each restaruant' do
