@@ -1,14 +1,31 @@
 <ul>
   <% @menu.menu_items.each do |menu_item| %>
     <%= content_tag :li, menu_item.name %>
+    <%= content_tag :li, menu_item.price %>
+    <%= content_tag :li, menu_item.description %>
+    <% if current_user && @menu.restaurant.user == current_user %>
+      <li><%= link_to 'Edit', edit_menu_item_path( menu_item ) %></li>
+      <li><%= link_to 'Delete', menu_item_path( menu_item ), method: :delete %></li>
+    <% end %>
   <% end %>
 </ul>
 
-<%= simple_form_for [ @menu,@menu_item ] do |form| %>
-  <%= form.input :name, label: false, placeholder: 'Item Name', required: true, autofocus: true %>
-  <%= form.input :description, label: false, placeholder: 'Description' %>
-  <%= form.input :price, label: false, placeholder: 'Price' %>
-  <%= form.submit 'Create Menu Item' %>
+<% if current_user && @menu.restaurant.user == current_user %>
+  <%= simple_form_for [ @menu,@menu_item ] do |form| %>
+    <%= form.input :name,
+        label: false,
+        placeholder: 'Item Name',
+        required: true,
+        autofocus: true %>
+    <%= form.input :description,
+        label: false,
+        placeholder: 'Description' %>
+    <%= form.input :price,
+        label: false,
+        placeholder: 'Price',
+        required: true %>
+    <%= form.submit 'Create Menu Item' %>
+  <% end %>
+<% else %>
+  <%= link_to 'Create Order', new_menu_order_path(@menu) %>
 <% end %>
-
-<%= link_to 'Create Order', new_menu_order_path(@menu) %>

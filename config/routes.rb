@@ -2,18 +2,27 @@ LaunchNDine::Application.routes.draw do
   devise_for :users,
     controllers: { registrations: 'launch/registrations' }
 
-  resources :users, only: [:show]
-
-  resources :restaurants, only: [:index, :show] do
-    resources :menus, only: [:new, :create, :index]
+  resources :users, only: [:show] do
+    resources :locations,   only: [:new, :create, :update]
+    resources :restaurants, only: [:new, :create]
+    resources :orders,      only: [:index]
   end
 
-  resources :menus, only: [:show] do
+  resources :locations, only: [:show, :edit, :index, :destroy]
+
+  resources :restaurants, except: [:new, :create] do
+    resources :menus,     only: [:new, :create, :index, :update]
+    resources :orders,    only: [:index]
+  end
+
+  resources :menus, only: [:show, :edit, :update, :destroy] do
     resources :menu_items, only: [:index, :create]
-    resources :orders, only: [:new, :create]
+    resources :orders,     only: [:new, :create]
   end
 
-  resources :orders, only: [:show, :index]
+  resources :menu_items, only: [:edit, :update, :destroy]
+
+  resources :orders, only: [:show, :index, :update]
 
   root 'pages#index'
 

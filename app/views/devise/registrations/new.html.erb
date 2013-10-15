@@ -7,21 +7,7 @@
     <%= f.input :password, label: false, placeholder: 'Password', required: true %>
     <%= f.input :password_confirmation, label: false, placeholder: 'Password Confirmation', required: true %>
     <%= f.hidden_field :role  %>
-
-    <%= f.simple_fields_for( :restaurants ) do |restaurant_form| %>
-      <%= restaurant_form.input :name, label: false, placeholder: 'Restaurant Name'  %>
-      <%= restaurant_form.simple_fields_for( :locations ) do |location_form| %>
-        <%= location_form.input :street, label: false, placeholder: 'Restaurant Address', required: true %>
-        <%= location_form.input :city, label: false, placeholder: 'Restaurant City', required: true %>
-        <%= location_form.input :state, label: false, placeholder: 'Restaurant State', required: true %>
-      <% end %>
-    <% end %>
-
-    <%= f.simple_fields_for( :locations ) do |location_form| %>
-      <%= location_form.input :street, label: false, placeholder: 'Street', required: true %>
-      <%= location_form.input :city, label: false, placeholder: 'City', required: true %>
-      <%= location_form.input :state, label: false, placeholder: 'State', required: true %>
-    <% end %>
+    <%= f.submit "I'm Ready" %>
   </div>
 
   <div class="form-actions">

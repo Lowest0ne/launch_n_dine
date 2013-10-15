@@ -1,0 +1,22 @@
+<h1>Create a Restaurant</h1>
+
+<%= simple_form_for [ current_user, @restaurant ] do |form| %>
+  <%= form.input :name,
+      label: false,
+      placeholder: 'Restaurant Name',
+      autofocus: true %>
+  <%= form.simple_fields_for :locations do |location_form| %>
+    <%= location_form.input :street,
+        label: false,
+        placeholder: 'Restaurant Street' %>
+    <%= location_form.input :city,
+        label: false,
+        placeholder: 'Restaurant City' %>
+    <%= location_form.input :state,
+        label: false,
+        placeholder: 'Restaurant State' %>
+  <% end %>
+
+  <%= form.submit %>
+
+<% end %>

@@ -1,0 +1,9 @@
+<% @location.errors.full_messages.each do |message| %>
+ <%= content_tag :p, message %>
+<% end %>
+<%= simple_form_for [@user, @location] do |form| %>
+  <%= form.input :street %>
+  <%= form.input :city %>
+  <%= form.input :state %>
+  <%= form.submit %>
+<% end %>

@@ -1,7 +1,1 @@
-
-<h3>My Restaurants</h3>
-<% @user.restaurants.each do | restaurant | %>
-  <%= content_tag :li,
-              link_to(restaurant.name, restaurant_menus_path(restaurant)),
-              class: 'left' %>
-<% end %>
+<%= link_to 'My Restaurants', restaurants_path %>
