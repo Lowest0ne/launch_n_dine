@@ -1,4 +1,4 @@
 test:
   adapter: postgresql
   database: launch_n_dine_test
-  username:
+  username: postgres
