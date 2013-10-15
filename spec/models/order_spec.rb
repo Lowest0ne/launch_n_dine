@@ -17,15 +17,8 @@ describe Order do
   it { should have_many(:menu_items).through(:order_items) }
 
   it 'must have at least one order_item' do
-    FactoryGirl.create(:owner)
-    FactoryGirl.create(:restaurant, user: User.last)
-    FactoryGirl.create(:menu, restaurant: Restaurant.last)
-    FactoryGirl.create(:menu_item, menu: Menu.last)
-    FactoryGirl.create(:customer)
-
-    order = Order.new
-    order.restaurant = Restaurant.first
-    order.customer = User.first
+    pool = create_pool
+    order = Order.new( customer: pool[:customer], restaurant: pool[:restaurant])
 
     order.should_not be_valid
 
@@ -36,17 +29,8 @@ describe Order do
 
   describe 'states' do
       let (:order) {
-        FactoryGirl.create(:owner)
-        FactoryGirl.create(:restaurant, user: User.last)
-        FactoryGirl.create(:menu, restaurant: Restaurant.last)
-        FactoryGirl.create(:menu_item, menu: Menu.last)
-        FactoryGirl.create(:customer)
-
-        order = Order.new(customer: User.first,
-                          restaurant: Restaurant.first)
-        order.order_items.build(menu_item: MenuItem.first)
-        order.save
-        order
+        pool = create_pool
+        create_order( pool[:customer], pool[:restaurant] )
       }
 
     describe 'initial' do
@@ -67,7 +51,7 @@ describe Order do
         order.state.should == 'canceled'
       end
 
-      ['ready', 'pick_up', 'complete'].each do |action|
+      ['claim', 'pick_up', 'complete'].each do |action|
         it "should not allow #{action}" do
           order.send(action).should be_false
         end
@@ -80,10 +64,11 @@ describe Order do
         order.reload
       end
 
-      it 'can be readied' do
-        order.ready
+
+      it 'can be claimed' do
+        order.claim
         order.reload
-        order.state.should == 'readied'
+        order.state.should == 'claimed'
       end
 
       it 'can be canceled' do
@@ -100,11 +85,11 @@ describe Order do
 
     end
 
-    describe 'readied' do
+    describe 'claim' do
 
       before(:each) do
         order.confirm
-        order.ready
+        order.claim
         order.reload
       end
 
@@ -130,7 +115,7 @@ describe Order do
     describe 'picked_up' do
       before(:each) do
         order.confirm
-        order.ready
+        order.claim
         order.pick_up
         order.reload
       end
@@ -141,13 +126,7 @@ describe Order do
         order.state.should == 'completed'
       end
 
-      it 'can be canceled' do
-        order.cancel
-        order.reload
-        order.state.should  == 'canceled'
-      end
-
-      ['confirm', 'ready'].each do |action|
+      ['confirm', 'claim', 'cancel'].each do |action|
         it "does not allow #{action}" do
           order.send(action).should be_false
         end
@@ -157,13 +136,13 @@ describe Order do
     describe 'complete' do
       before(:each) do
         order.confirm
-        order.ready
+        order.claim
         order.pick_up
         order.complete
         order.reload
       end
 
-      ['confirm', 'ready', 'pick_up', 'cancel'].each do |action|
+      ['confirm', 'claim', 'pick_up', 'cancel'].each do |action|
         it "does not allow #{action}" do
           order.send(action).should be_false
         end
@@ -176,7 +155,7 @@ describe Order do
         order.reload
       end
 
-      ['confirm', 'ready', 'pick_up', 'complete'].each do |action|
+      ['confirm', 'claim', 'pick_up', 'complete'].each do |action|
         it "does not allow #{action}" do
           order.send(action).should be_false
         end
