@@ -44,10 +44,7 @@ describe 'order viewing' do
         end
       end
 
-
       click_on 'My Orders'
-      save_and_open_page
-
       Order.all.each do |order|
         page.should have_content( order.restaurant.name )
         page.should have_content( order.restaurant.location.street )
@@ -78,4 +75,34 @@ describe 'order viewing' do
       end
     end
   end
+
+  describe 'a driver' do
+    it 'can view orders without drivers' do
+      early_driver = FactoryGirl.create( :driver )
+      orders = Order.where( "state != ? and state != ?", 'requested', 'confirmed' )
+      orders.each do |order|
+        order.driver = early_driver
+        order.save
+      end
+
+      late_driver = sign_in( @pool[:driver] )
+      click_on 'Possibilities'
+
+      page.should have_content( @requested_order.state )
+      page.should have_content( @confirmed_order.state )
+      page.should_not have_content( @claimed_order.state )
+      page.should_not have_content( @picked_up_order.state )
+      page.should_not have_content( @completed_order.state )
+    end
+
+    it 'can not view canceled orders as possibiilities' do
+      driver = sign_in( @pool[:driver] )
+      @canceled_order.driver = driver
+      @canceled_order.save
+      click_on 'Possibilities'
+      page.should_not have_content( @canceled_order.state )
+    end
+
+  end
+
 end

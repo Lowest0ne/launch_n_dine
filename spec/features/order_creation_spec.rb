@@ -10,7 +10,7 @@ feature 'creating orders' do
       @restaurant = FactoryGirl.create(:restaurant, user: owner)
       @menu = FactoryGirl.create(:menu, restaurant: @restaurant)
       @menu_item = FactoryGirl.create(:menu_item, menu: @menu)
-      create_signed_in(:customer)
+      @customer = create_signed_in(:customer)
       click_on @restaurant.name
       click_on 'Menus'
       click_on @menu.name
@@ -32,6 +32,19 @@ feature 'creating orders' do
       page.should_not have_content("Order has been created")
       expect(Order.count).to eql( @prev_count )
 
+    end
+
+    it 'is prompted for address if none is supplied' do
+      visit root_path
+      click_on 'Restaurants'
+      click_on @restaurant.name
+      click_on 'Menus'
+      click_on @menu.name
+
+      @customer.locations.each{ |l| l.destroy }
+      @customer.reload
+      click_on 'Create Order'
+      current_path.should == new_user_location_path( @customer ) if @customer.locations.empty?
     end
   end
 end
