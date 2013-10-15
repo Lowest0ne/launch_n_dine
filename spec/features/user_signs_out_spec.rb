@@ -7,12 +7,14 @@ feature 'user signs out' do
     page.should_not have_content('Sign Out')
   end
 
-  scenario 'a user who is signed in can sign out' do
-    user = create_signed_in(:user)
+  [:customer, :driver, :owner].each do |role|
+  it "#{role} who is signed in can sign out" do
+    user = create_signed_in(role)
 
     click_link 'Sign Out'
 
     page.should_not have_content('Sign Out')
     page.should have_content('Sign In')
+  end
   end
 end

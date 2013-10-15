@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'user signs in' do
 
-  let(:user){ FactoryGirl.create(:user) }
+  let(:user){ FactoryGirl.create(:customer) }
 
   scenario 'an existing user with valid information' do
 

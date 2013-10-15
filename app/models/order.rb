@@ -1,7 +1,8 @@
 class Order < ActiveRecord::Base
 
-  validates_presence_of( :customer )
-  validates_presence_of( :restaurant )
+  validates_presence_of :customer
+  validates_presence_of :restaurant
+  validates_presence_of :state
 
   validate :at_least_one_order_item
 
@@ -24,12 +25,10 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :order_items
 
-  validates_presence_of :state
-
   state_machine :state, initial: :requested do
     state :requested
     state :confirmed
-    state :readied
+    state :claimed
     state :picked_up
     state :completed
     state :canceled
@@ -38,12 +37,12 @@ class Order < ActiveRecord::Base
       transition requested: :confirmed
     end
 
-    event :ready do
-      transition confirmed: :readied
+    event :claim do
+      transition confirmed: :claimed
     end
 
     event :pick_up do
-      transition readied: :picked_up
+      transition claimed: :picked_up
     end
 
     event :complete do
@@ -53,9 +52,9 @@ class Order < ActiveRecord::Base
     event :cancel do
       transition requested: :canceled
       transition confirmed: :canceled
-      transition readied:   :canceled
-      transition picked_up: :canceled
+      transition claimed:   :canceled
     end
 
   end
+
 end

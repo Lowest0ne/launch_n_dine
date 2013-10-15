@@ -1,0 +1,9 @@
+<%= simple_form_for @restaurant do |form| %>
+  <%= form.input :name %>
+  <%= form.simple_fields_for :locations do |location_form| %>
+    <%= location_form.input :street %>
+    <%= location_form.input :city %>
+    <%= location_form.input :state %>
+  <% end %>
+  <%= form.submit %>
+<% end %>

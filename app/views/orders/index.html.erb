@@ -2,11 +2,16 @@
 <ol>
 <% @orders.each do |order| %>
   <li>
+    <p><%= order.id %><p>
+    <p><%= order.state %></p>
     <p><%= order.restaurant.name %></p>
     <p><%= order.restaurant.location.street %></p>
     <p><%= order.restaurant.location.city %></p>
+    <p><%= order.restaurant.location.state %></p>
     <p><%= order.customer.location.street %></p>
     <p><%= order.customer.location.city %></p>
+    <p><%= order.customer.location.state %></p>
+    <p><%= order_options(order) %></p>
   </li>
 <% end %>
 </ol>

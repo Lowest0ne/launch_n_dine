@@ -1,0 +1,4 @@
+<%= f.simple_fields_for( :restaurant ) do |restaurant_form| %>
+  <%= restaurant_form.input :name, label: false, placeholder: 'Restaurant Name'  %>
+  <%= render partial: 'locations/form', locals: { f: restaurant_form } %>
+<% end %>

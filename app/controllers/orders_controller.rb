@@ -1,12 +1,15 @@
 class OrdersController < ApplicationController
+  before_filter :authenticate_user!, only: [:index]
 
   def new
+    redirect_to new_user_location_path( current_user ) if current_user.locations.empty?
     @menu = Menu.find( params[:menu_id] )
     @order = Order.new
     @order.order_items.build
   end
 
   def create
+    redirect_to new_user_location_path( current_user ) if current_user.locations.empty?
     @menu = Menu.find( params[:menu_id] )
     @order = Order.new( order_params )
     @order.customer = current_user
@@ -24,7 +27,31 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    case current_user.role
+    when 'driver'
+      if params[:view] == 'free'
+        @orders = Order.where( "state = ? or state = ?", 'requested', 'confirmed' )
+      else
+        @orders = Order.where( driver: current_user ).where( "state != 'canceled'" )
+      end
+    when 'customer'
+      redirect_to new_user_location_path( current_user ) if current_user.locations.empty?
+      @orders = current_user.purchases
+    when 'owner'
+      @orders = current_user.restaurants.map{ |r| r.orders }.flatten
+    end
+  end
+
+  def update
+    @order = Order.find( params[:id] )
+    case params[:command]
+      when 'cancel';   @order.cancel
+      when 'confirm';  @order.confirm
+      when 'claim';    @order.claim; @order.driver = current_user; @order.save
+      when 'pick_up';  @order.pick_up
+      when 'complete'; @order.complete
+    end
+    redirect_to orders_path
   end
 
   protected
