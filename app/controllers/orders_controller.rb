@@ -42,6 +42,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order = Order.find( params[:id] )
+    case params[:command]
+      when 'cancel';   @order.cancel
+      when 'confirm';  @order.confirm
+      when 'claim';    @order.claim; @order.driver = current_user; @order.save
+      when 'pick_up';  @order.pick_up
+      when 'complete'; @order.complete
+    end
+    redirect_to orders_path
+  end
+
   protected
   def order_params
     params.require(:order).permit( order_items_attributes: [:menu_item_id] )

@@ -46,14 +46,28 @@ describe 'order viewing' do
 
       click_on 'My Orders'
       Order.all.each do |order|
-        page.should have_content( order.restaurant.name )
-        page.should have_content( order.restaurant.location.street )
-        page.should have_content( order.restaurant.location.city )
-        page.should have_content( order.restaurant.location.state )
-        page.should have_content( order.customer.location.street )
-        page.should have_content( order.customer.location.city )
-        page.should have_content( order.customer.location.state )
-        page.should have_content( order.state )
+        if role == :driver && order.state == 'canceled'
+          page.should_not have_content( order.id )
+
+# The location is always the same...
+# but the id is a better tell anyway
+          #page.should_not have_content( order.restaurant.name )
+          #page.should_not have_content( order.restaurant.location.street )
+          #page.should_not have_content( order.restaurant.location.city )
+          #page.should_not have_content( order.restaurant.location.state )
+          #page.should_not have_content( order.customer.location.street )
+          #page.should_not have_content( order.customer.location.city )
+          #page.should_not have_content( order.customer.location.state )
+        else
+          page.should have_content( order.id )
+          page.should have_content( order.restaurant.name )
+          page.should have_content( order.restaurant.location.street )
+          page.should have_content( order.restaurant.location.city )
+          page.should have_content( order.restaurant.location.state )
+          page.should have_content( order.customer.location.street )
+          page.should have_content( order.customer.location.city )
+          page.should have_content( order.customer.location.state )
+        end
       end
     end
   end
@@ -64,6 +78,7 @@ describe 'order viewing' do
       click_on 'My Orders'
 
       Order.all.each do |order|
+        page.should_not have_content( order.id )
         page.should_not have_content( order.restaurant.name )
         page.should_not have_content( order.restaurant.location.street )
         page.should_not have_content( order.restaurant.location.city )
@@ -88,11 +103,11 @@ describe 'order viewing' do
       late_driver = sign_in( @pool[:driver] )
       click_on 'Possibilities'
 
-      page.should have_content( @requested_order.state )
-      page.should have_content( @confirmed_order.state )
-      page.should_not have_content( @claimed_order.state )
-      page.should_not have_content( @picked_up_order.state )
-      page.should_not have_content( @completed_order.state )
+      page.should have_content( @requested_order.id )
+      page.should have_content( @confirmed_order.id )
+      page.should_not have_content( @claimed_order.id )
+      page.should_not have_content( @picked_up_order.id )
+      page.should_not have_content( @completed_order.id )
     end
 
     it 'can not view canceled orders as possibiilities' do
