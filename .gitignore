@@ -26,3 +26,6 @@
 
 # Ignore erd diagram
 /erd.pdf
+
+# Ignore coverall
+/coverage/
