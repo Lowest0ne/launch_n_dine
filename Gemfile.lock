@@ -241,6 +241,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   rails-erd
   rails_12factor
+  rake
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc
