@@ -60,3 +60,4 @@ gem 'zurb-foundation', '~> 4.0.0'
 gem 'state_machine'
 
 gem 'rails_12factor', group: :production
+gem 'rake', group: :test
