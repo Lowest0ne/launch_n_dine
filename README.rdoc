@@ -1,6 +1,6 @@
 = Launch 'n Dine
 == An autonomous food delivery service
-![](https://secure.travis-ci.org/Lowest0ne/launch_n_dine.png?branch=master)
+![](https://secure.travis-ci.org/Lowest0ne/launch_n_dine.png?branch=master)]
 == How to use
 * fork and clone
 * bundle
