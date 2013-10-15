@@ -20,6 +20,8 @@ LaunchNDine::Application.routes.draw do
     resources :orders,     only: [:new, :create]
   end
 
+  resources :menu_items, only: [:edit, :update, :destroy]
+
   resources :orders, only: [:show, :index]
 
   root 'pages#index'

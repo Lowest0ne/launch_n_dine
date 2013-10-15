@@ -1,6 +1,12 @@
 <ul>
   <% @menu.menu_items.each do |menu_item| %>
     <%= content_tag :li, menu_item.name %>
+    <%= content_tag :li, menu_item.price %>
+    <%= content_tag :li, menu_item.description %>
+    <% if current_user && @menu.restaurant.user == current_user %>
+      <li><%= link_to 'Edit', edit_menu_item_path( menu_item ) %></li>
+      <li><%= link_to 'Delete', menu_item_path( menu_item ), method: :delete %></li>
+    <% end %>
   <% end %>
 </ul>
 
