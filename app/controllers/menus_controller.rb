@@ -8,7 +8,6 @@ class MenusController < ApplicationController
 
   def index
     @restaurant = Restaurant.find( params[:restaurant_id] )
-    redirect_to root_path unless @restaurant.user == current_user
     @menus = @restaurant.menus
     @menu = Menu.new
   end
