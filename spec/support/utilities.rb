@@ -7,12 +7,12 @@ def sign_in user
   fill_in 'Password', with: user.password
 
   click_button 'Sign In'
+  user
 end
 
 def create_signed_in( factory )
   resource = FactoryGirl.create( factory )
   sign_in(resource)
-  resource
 end
 
 def create_pool

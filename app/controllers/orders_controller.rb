@@ -25,16 +25,14 @@ class OrdersController < ApplicationController
   end
 
   def index
-    if !current_user || current_user.role == 'customer'
-      redirect_to root_path
-    elsif params[:restaurant_id]
-      @restaurant = Restaurant.find(params[:restaurant_id])
-      redirect_to root_path if current_user.role == 'owner' && @restaurant.user != current_user
-      @orders = Order.where( restaurant: @restaurant )
-    else
-      @orders = Order.all
+    case current_user.role
+    when 'driver'
+      @orders = current_user.deliveries
+    when 'customer'
+      @orders = current_user.purchases
+    when 'owner'
+      @orders = current_user.restaurants.map{ |r| r.orders }.flatten
     end
-
   end
 
   protected
