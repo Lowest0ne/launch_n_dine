@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :authenticate_user!, only: [:index]
+  before_filter :authenticate_user!
 
   def new
     redirect_to new_user_location_path( current_user ) if current_user.locations.empty?

@@ -84,11 +84,11 @@ LaunchNDine::Application.configure do
     port: 587,
     user_name: ENV['MANDRILL_USERNAME'],
     password: ENV['MANDRILL_APIKEY'],
-    domain: 'vast-crag-6287.herokuapp.com',
+    domain: 'launch-n-dine.herokuapp.com',
     authentication: :plain,
     enable_starttls_auto: true
   }
   config.action_mailer.default_url_options = {
-      :host => 'vast-crag-6287.herokuapp.com'
+      :host => 'launch-n-dine.herokuapp.com'
   }
 end

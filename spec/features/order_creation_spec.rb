@@ -2,6 +2,12 @@ require 'spec_helper'
 
 feature 'creating orders' do
 
+  it 'can not be done unless signed in' do
+    menu = create_pool[:menu]
+    visit new_menu_order_path( menu )
+    current_path.should == new_user_session_path
+  end
+
   describe 'a signed in user' do
 
     before :each do
