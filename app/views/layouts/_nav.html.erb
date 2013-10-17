@@ -6,7 +6,9 @@
   <section class='top-bar-section'>
     <ul class='left'>
       <%= content_tag :li, link_to( 'Restaurants', restaurants_path ) %>
-      <%= content_tag(:li, flash[:notice], id: 'launch_notice') if flash[:notice] %>
+<%= content_tag(:li, flash[:notice], class:'alert-box success') if flash[:notice] %>
+<%= content_tag(:li, flash[:alert], class:'alert-box alert') if flash[:alert]%>
+
     </ul>
     <ul class='right'>
     <% if user_signed_in? %>
