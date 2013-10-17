@@ -1,6 +1,6 @@
 # Launch 'n Dine
 ### An autonomous food delivery service
-[![TravisTest](https://travis-ci.org/Lowest0ne/launch_n_dine.png)](https://travis-ci.org/Lowest0ne/launch_n_dine.png)
+[![TravisTest](https://travis-ci.org/Lowest0ne/launch_n_dine.png?branch=master,production)](https://travis-ci.org/Lowest0ne/launch_n_dine.png?branch=master,production)
 [![CodeClimate](https://d3s6mut3hikguw.cloudfront.net/github/Lowest0ne/launch_n_dine.png)](https://d3s6mut3hikguw.cloudfront.net/github/Lowest0ne/launch_n_dine.png)
 [![Coverage Status](https://coveralls.io/repos/Lowest0ne/launch_n_dine/badge.png)](https://coveralls.io/r/Lowest0ne/launch_n_dine)
 

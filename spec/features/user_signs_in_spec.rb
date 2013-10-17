@@ -27,8 +27,8 @@ feature 'user signs in' do
     visit root_path
     click_link 'Sign In'
 
-    fill_in 'Email', with: 'atotallyvalid@email.com'
-    fill_in 'Password', with: 'prettysure'
+    fill_in 'user_email', with: 'atotallyvalid@email.com'
+    fill_in 'user_password', with: 'prettysure'
 
     click_button 'Sign In'
 

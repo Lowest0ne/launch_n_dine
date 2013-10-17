@@ -1,0 +1,8 @@
+<fieldset class='row'><legend><%= "Order Number: #{order.id}"%></legend>
+  <%= render partial: 'locations/location', object: order.restaurant.location, locals: { title: "From: #{order.restaurant.name}"} %>
+  <%= render partial: 'locations/location', object: order.customer.location, locals: {title: 'Delivered to' } %>
+  <ul class='vcard large-4 columns'>
+    <li class='fn'><%= order.state.capitalize %></li><hr>
+    <li><%= order_options( order ) %><li>
+  </ul>
+</fieldset>

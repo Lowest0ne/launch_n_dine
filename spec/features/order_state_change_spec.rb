@@ -26,7 +26,7 @@ describe 'order state change' do
     it "can not cancel a #{state} order" do
       order = create_order( @pool[:customer], @pool[:restaurant], state )
       click_on 'My Orders'
-      page.should_not have_content('Cancel')
+      page.should_not have_content(/Cancel/)
     end
     end
 
@@ -34,10 +34,10 @@ describe 'order state change' do
     it "it can not confirm, claim,  pick up, or complete a #{state} order" do
       order = create_order( @pool[:customer], @pool[:restaurant], state )
       click_on 'My Orders'
-      page.should_not have_content('Claim')
-      page.should_not have_content('Pick Up')
-      page.should_not have_content('Confirm')
-      page.should_not have_content('Complete')
+      page.should_not have_content(/Claim/)
+      page.should_not have_content(/Pick Up/)
+      page.should_not have_content(/Confirm/)
+      page.should_not have_content(/Complete/)
     end
     end
   end
@@ -59,7 +59,7 @@ describe 'order state change' do
     it "it can not confirm a #{state} order" do
       order = create_order( @pool[:customer], @pool[:restaurant], state )
       click_on 'My Orders'
-      page.should_not have_content('Confirm')
+      page.should_not have_content(/Confirm/)
     end
     end
 
@@ -67,10 +67,10 @@ describe 'order state change' do
     it "it can not cancel, claim, pick up, or complete a #{state} order" do
       order = create_order( @pool[:customer], @pool[:restaurant], state )
       click_on 'My Orders'
-      page.should_not have_content('Claim')
-      page.should_not have_content('Pick Up')
-      page.should_not have_content('Cancel')
-      page.should_not have_content('Complete')
+      page.should_not have_content(/Claim/)
+      page.should_not have_content(/Pick Up/)
+      page.should_not have_content(/Cancel/)
+      page.should_not have_content(/Complete/)
     end
     end
   end
@@ -112,11 +112,11 @@ describe 'order state change' do
     it "can not cancel or confirm a #{state} order" do
       create_order( @pool[:customer], @pool[:restaurant], state)
       click_on 'My Orders'
-      page.should_not have_content('Cancel')
-      page.should_not have_content('Confirm')
+      page.should_not have_content(/Cancel/)
+      page.should_not have_content(/Confirm/)
       click_on 'Possibilities'
-      page.should_not have_content('Cancel')
-      page.should_not have_content('Confirm')
+      page.should_not have_content(/Cancel/)
+      page.should_not have_content(/Confirm/)
     end
     end
   end
