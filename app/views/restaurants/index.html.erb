@@ -1,6 +1,10 @@
+<h3>Our Restaurants</h3>
 <% @restaurants.each do |restaurant| %>
-  <%= link_to restaurant.name, restaurant_path( restaurant )%>
+  <div class='panel'>
+    <%= link_to restaurant.name, restaurant_path( restaurant )%>
+  </div>
 <% end %>
+
 <% if current_user && current_user.is_owner? %>
   <%= link_to 'Add Restaurant', new_user_restaurant_path( current_user ) %>
 <% end %>
