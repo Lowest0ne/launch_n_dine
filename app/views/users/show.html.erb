@@ -1,4 +1,9 @@
-<%= content_tag :h3, current_user.full_name %>
+<%= content_tag :h3, "Hello, #{current_user.full_name}" %>
+<% if current_user.location %>
+<%= render partial: 'locations/location',
+           object: current_user.location,
+           locals: { title: "Your Address" }%>
+<% end %>
 <%= link_to 'Add Location', new_user_location_path( current_user ) %>
 <%= link_to 'View Locations', locations_path %>
 <%= render partial: 'owner', object: current_user if current_user.role == 'owner' %>
