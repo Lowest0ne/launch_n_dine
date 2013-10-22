@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'JSON'
+require 'json'
 
 seed_data = JSON.parse( File.read( './db/seed_data.json' ), symbolize_names: true)
 
