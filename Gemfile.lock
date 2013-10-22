@@ -251,7 +251,6 @@ DEPENDENCIES
   factory_girl
   jbuilder (~> 1.2)
   jquery-rails
-  json
   mailcatcher
   pg
   pry-rails
