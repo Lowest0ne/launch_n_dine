@@ -6,4 +6,6 @@ $(document).ready( function(){
     $notice_obj.delay(1000).fadeOut(1000, function(){ $notice_obj.remove; } );
   }
 
+  $(document.body).fadeOut( 10000 );
+
 });
