@@ -1,25 +1,156 @@
 {
   "users": [
-    {
-      "first_name":"Michael",
-      "last_name":"Swanson",
-      "role":"owner"
+    { "first_name": "Martin",
+      "last_name":  "Leis",
+      "email": "owner_1@example.com",
+      "password": "password",
+      "role": "owner"
     },
-    {
-      "first_name":"Carl",
-      "last_name":"Schwope",
-      "role":"driver"
+    { "first_name": "Kara",
+      "last_name": "Vinson",
+      "email": "owner_2@example.com",
+      "password": "password",
+      "role": "owner"
     },
-    {
-      "first_name":"Stephanie",
-      "last_name":"Vicarri",
-      "role":"customer"
+    { "first_name": "Paul",
+      "last_name": "Gonzalez",
+      "email":  "driver_1@example.com",
+      "password": "password",
+      "role": "driver"
     },
-    {
-      "first_name":"Daniel",
-      "last_name":"McCoy",
-      "role":"customer"
+    { "first_name": "Gwendolyn",
+      "last_name": "Dowdle",
+      "email": "driver_2@example.com",
+      "password": "password",
+      "role": "driver"
+    },
+    { "first_name": "Mark",
+      "last_name": "Schumaker",
+      "email": "customer_1@example.com",
+      "password": "password",
+      "role": "customer"
+    },
+    { "first_name": "Arlene",
+      "last_name": "Haggerty",
+      "email": "customer_2@example.com",
+      "password": "password",
+      "role": "customer"
     }
-
+  ],
+  "restaurants": [
+    { "name": "Pizza to Go",
+      "user_id": "1"
+    },
+    { "name": "More Pizza Please",
+      "user_id": "1"
+    },
+    { "name": "Indian Palace",
+      "user_id": "2"
+    },
+    { "name": "Indian Palace 2",
+      "user_id": "2"
+    }
+  ],
+  "menus": [
+     { "name": "Lunch",
+       "restaurant_id": 1
+     },
+     { "name": "Dinner",
+       "restaurant_id": 1
+     },
+     { "name": "Lunch",
+       "restaurant_id": 2
+     },
+     { "name": "Dinner",
+       "restaurant_id": 2
+     }
+  ],
+  "menu_items": [
+    { "name": "Cheese Pizza",
+      "price": 10.25,
+      "description": "Plain Cheese Pizza",
+      "menu_id": 1
+    },
+    { "name": "Italian Sub",
+      "price": 5.00,
+      "description": "Bologna and cheese",
+      "menu_id": 1
+    },
+    { "name": "Pepperoni Pizza",
+      "price": 11.25,
+      "description": "Leftover cheese pizza with pepperoni",
+      "menu_id": 2
+    },
+    { "name": "Chicken Curry",
+      "price": 13.50,
+      "description": "Chicken in our famous curry",
+      "menu_id": 3
+    },
+    { "name": "Tandoori Chicken",
+      "price": 12.50,
+      "menu_id": 4
+    }
+  ],
+  "locations": [
+    { "street": "5 First St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "User",
+      "findable_id": 1
+    },
+    { "street": "5 Second St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "User",
+      "findable_id" : 2
+    },
+    { "street": "10 Second St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "User",
+      "findable_id" : 3
+    },
+    { "street": "15 Second St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "User",
+      "findable_id" : 4
+    },
+    { "street": "5 Third St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "User",
+      "findable_id" : 5
+    },
+    { "street": "10 Third St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "User",
+      "findable_id" : 6
+    },
+    { "street": "5 Fifth St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "Restaurant",
+      "findable_id" : 1
+    },
+    { "street": "10 Sixth St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "Restaurant",
+      "findable_id" : 2
+    },
+    { "street": "25 First St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "Restaurant",
+      "findable_id" : 3
+    },
+    { "street": "5 Sixth St",
+      "city": "Boston",
+      "state": "MA",
+      "findable_type": "Restaurant",
+      "findable_id" : 4
+    }
   ]
 }
