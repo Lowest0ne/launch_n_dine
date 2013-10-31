@@ -1,5 +1,5 @@
 <ul class='vcard'>
-  <li class='fn'><%= title %></li><hr>
   <li><%= location.street %></li>
   <li><%= "#{location.city}, #{location.state}" %>
+  <%= location_options( location ) %>
 </ul>
