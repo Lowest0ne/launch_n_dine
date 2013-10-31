@@ -1,0 +1,6 @@
+<%= content_tag :h1, restaurant.name %>
+<%= render partial: 'locations/location',
+           collection: restaurant.locations,
+           locals: { title: 'Address' } %>
+<%= link_to 'Menus', restaurant_menus_path( restaurant ) %>
+<%= user_views %>
