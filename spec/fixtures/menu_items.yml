@@ -1,0 +1,5 @@
+one:
+  name: 'First Item'
+  description: 'First Description'
+  price: 1.25
+  menu: one

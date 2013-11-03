@@ -35,8 +35,7 @@ class MenuItemsController < ApplicationController
     if current_user != @menu_item.menu.restaurant.user
       redirect_to root_path
     elsif @menu_item.update( menu_item_params )
-      redirect_to menu_menu_items_path( @menu_item.menu ),
-        notice: 'Menu Item Updated'
+      redirect_to menu_item_path( @menu_item ), notice: 'Menu Item Updated'
     else
       render :edit
     end

@@ -1,0 +1,20 @@
+
+one:
+  street: 'First St'
+  city:   'Boston'
+  state:  'MA'
+
+two:
+  street: 'Second St'
+  city:   'Boston'
+  state:  'MA'
+
+three:
+  street: 'Third St'
+  city:   'Boston'
+  state:  'MA'
+
+four:
+  street: 'Fourth St'
+  city:   'Boston'
+  state:  'MA'

@@ -1,0 +1,5 @@
+one:
+  customer: customer
+  restaurant: one
+  state: 'requested'
+  menu_item: one

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+owner:
+  first_name: 'Owner'
+  last_name: 'LastName'
+  email: 'owner@example.com'
+  role: 'owner'
+
+customer:
+  first_name: 'Customer'
+  last_name: 'LastName'
+  email: 'customer@example.com'
+  role: 'customer'
+
+driver:
+  first_name: 'Driver'
+  last_name: 'LastName'
+  email: 'driver@example.com'
+  role: 'driver'
