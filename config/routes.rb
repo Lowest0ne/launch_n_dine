@@ -16,11 +16,10 @@ LaunchNDine::Application.routes.draw do
   end
 
   resources :menus, only: [:show, :edit, :update, :destroy] do
-    resources :menu_items, only: [:index, :create]
+    resources :menu_items, shallow: true
     resources :orders,     only: [:new, :create]
   end
 
-  resources :menu_items, only: [:edit, :update, :destroy]
 
   resources :orders, only: [:show, :index, :update]
 
