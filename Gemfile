@@ -64,3 +64,5 @@ gem 'rails_12factor', group: :production
 group :test do
   gem 'rake'
 end
+
+gem 'quiet_assets', group: :development
