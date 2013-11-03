@@ -1,32 +1,37 @@
 class MenuItemsController < ApplicationController
 
+  before_filter :find_menu, only:   [:new, :create, :index ]
+  before_filter :find_item, except: [:new, :create, :index ]
+
   before_filter :authenticate_user!, except: [ :show, :index ]
 
-  def index
-    @menu = Menu.find( params[:menu_id])
-    @menu_items = @menu.menu_items
+  def new
     @menu_item = MenuItem.new
   end
 
-  def create
-    @menu = Menu.find( params[:menu_id])
+  def index
     @menu_items = @menu.menu_items
+  end
+
+  def show
+  end
+
+  def create
     @menu_item = @menu.menu_items.new( menu_item_params )
+    @menu_item.menu = @menu
 
     if @menu_item.save
-      redirect_to menu_menu_items_path(@menu), notice: 'Menu Item Added'
+      redirect_to menu_item_path(@menu_item), notice: 'Menu Item Added'
     else
-      render :index
+      render :new
     end
   end
 
   def edit
-    @menu_item = MenuItem.find( params[:id] )
     redirect_to root_path unless @menu_item.menu.restaurant.user == current_user
   end
 
   def update
-    @menu_item = MenuItem.find( params[:id] )
     if current_user != @menu_item.menu.restaurant.user
       redirect_to root_path
     elsif @menu_item.update( menu_item_params )
@@ -38,7 +43,6 @@ class MenuItemsController < ApplicationController
   end
 
   def destroy
-    @menu_item = MenuItem.find( params[:id] )
     if current_user != @menu_item.menu.restaurant.user
       redirect_to root_path
     else
@@ -48,6 +52,15 @@ class MenuItemsController < ApplicationController
     end
   end
 
+  protected
+
+  def find_item
+    @menu_item = MenuItem.find( params[:id] )
+  end
+
+  def find_menu
+    @menu = Menu.find( params[ :menu_id ] )
+  end
 
   def menu_item_params
     params.require(:menu_item).permit(:name, :description, :price)

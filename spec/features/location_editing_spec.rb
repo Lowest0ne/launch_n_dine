@@ -29,8 +29,7 @@ describe 'Location editing' do
         click_on 'View Locations'
 
         location = @user.locations.first
-        path = "#{location.street} #{location.city}, #{location.state}"
-        click_on path
+        click_on 'Edit'
         fill_in 'location_street', with: 'diff1'
         fill_in 'location_city', with: 'diff2'
         fill_in 'location_state', with: 'diff3'

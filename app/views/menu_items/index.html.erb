@@ -10,22 +10,9 @@
   <% end %>
 </ul>
 
+
 <% if current_user && @menu.restaurant.user == current_user %>
-  <%= simple_form_for [ @menu,@menu_item ] do |form| %>
-    <%= form.input :name,
-        label: false,
-        placeholder: 'Item Name',
-        required: true,
-        autofocus: true %>
-    <%= form.input :description,
-        label: false,
-        placeholder: 'Description' %>
-    <%= form.input :price,
-        label: false,
-        placeholder: 'Price',
-        required: true %>
-    <%= form.submit 'Create Menu Item' %>
-  <% end %>
+  <%= link_to 'Add Item', new_menu_menu_item_path( @menu ) %>
 <% else %>
   <%= link_to 'Create Order', new_menu_order_path(@menu) %>
 <% end %>

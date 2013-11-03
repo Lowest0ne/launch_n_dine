@@ -41,6 +41,7 @@ describe 'adding a menu item' do
       @total_count = MenuItem.count
       visit restaurant_menus_path(@restaurant)
       click_link @menu.name
+      click_link 'Add Item'
     end
 
     it 'with valid data' do

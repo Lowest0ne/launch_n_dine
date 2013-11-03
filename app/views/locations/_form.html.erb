@@ -2,8 +2,8 @@
  <%= content_tag :p, message %>
 <% end %>
 <%= simple_form_for [@user, @location] do |form| %>
-  <%= form.input :street %>
-  <%= form.input :city %>
-  <%= form.input :state %>
+  <%= form.input :street, label: false, placehoder: 'Street', required:true %>
+  <%= form.input :city,   label: false, placehoder: 'City'  , required:true %>
+  <%= form.input :state,  label: false, placehoder: 'State' , required:true %>
   <%= form.submit %>
 <% end %>

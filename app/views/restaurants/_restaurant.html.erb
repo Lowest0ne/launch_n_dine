@@ -1,0 +1,5 @@
+<%= link_to restaurant.name, restaurant_path( restaurant ) %>
+<%= render partial: 'locations/location',
+           collection: restaurant.locations %>
+<%= link_to 'Menus', restaurant_menus_path( restaurant ) %>
+<%= user_views( restaurant ) %>

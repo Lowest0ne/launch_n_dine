@@ -63,5 +63,6 @@ gem 'rails_12factor', group: :production
 
 group :test do
   gem 'rake'
-  gem 'coveralls', require: false
 end
+
+gem 'quiet_assets', group: :development

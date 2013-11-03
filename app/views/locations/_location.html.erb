@@ -1,5 +1,5 @@
-<ul class='vcard inline-block large-4 columns'>
-  <li class='fn'><%= title %></li><hr>
+<ul class='vcard'>
   <li><%= location.street %></li>
   <li><%= "#{location.city}, #{location.state}" %>
+  <%= location_options( location ) %>
 </ul>

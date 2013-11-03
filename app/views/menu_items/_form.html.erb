@@ -1,0 +1,15 @@
+<%= simple_form_for [menu, menu_item] do |form| %>
+  <%= form.input :name,
+      label: false,
+      placeholder: 'Item Name',
+      required: true,
+      autofocus: true %>
+  <%= form.input :description,
+      label: false,
+      placeholder: 'Description' %>
+  <%= form.input :price,
+      label: false,
+      placeholder: 'Price',
+      required: true %>
+  <%= form.submit 'Create Menu Item' %>
+<% end %>
