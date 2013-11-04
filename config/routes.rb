@@ -1,6 +1,5 @@
 LaunchNDine::Application.routes.draw do
-  devise_for :users,
-    controllers: { registrations: 'launch/registrations' }
+  devise_for :users, controllers: { registrations: 'launch/registrations' }
 
   resources :users, only: [:show] do
     resources :locations,   only: [:new, :create, :update]
@@ -11,11 +10,11 @@ LaunchNDine::Application.routes.draw do
   resources :locations, only: [:show, :edit, :index, :destroy]
 
   resources :restaurants, except: [:new, :create] do
-    resources :menus,     only: [:new, :create, :index, :update]
+    resources :menus, shallow: true
     resources :orders,    only: [:index]
   end
 
-  resources :menus, only: [:show, :edit, :update, :destroy] do
+  resources :menus do
     resources :menu_items, shallow: true
     resources :orders,     only: [:new, :create]
   end

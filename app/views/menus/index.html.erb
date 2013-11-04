@@ -1,19 +1,6 @@
-<p><%= "Menus for #{@restaurant.name}" %>
-<ul>
-  <% @menus.each do | menu | %>
-   <li>
-    <%= link_to menu.name, menu_menu_items_path(menu) %>
-    <% if @restaurant.user == current_user %>
-      <%= link_to 'Edit', edit_menu_path( menu ) %>
-      <%= link_to 'Delete', menu_path( menu ), method: :delete %>
-    <% end %>
-  </li>
-  <% end %>
-</ul>
+<%= content_tag :p, "Menus for #{@restaurant.name}" %>
+<%= render @menus %>
 
 <% if current_user && @restaurant.user == current_user %>
-  <%= simple_form_for @menu, url: restaurant_menus_path do |form| %>
-    <%= form.input :name, label: false, placeholder: 'menu name' %>
-    <%= form.button :submit, 'Add Menu' %>
-  <% end %>
+  <%= link_to 'Add Menu', new_restaurant_menu_path( @restaurant ) %>
 <% end %>

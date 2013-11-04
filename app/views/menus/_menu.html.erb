@@ -1,0 +1,7 @@
+<div>
+<%= link_to menu.name, menu_menu_items_path(menu) %>
+<% if menu.restaurant.user == current_user %>
+  <%= link_to 'Edit', edit_menu_path( menu ) %>
+  <%= link_to 'Delete', menu_path( menu ), method: :delete %>
+<% end %>
+<div>

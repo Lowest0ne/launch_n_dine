@@ -1,4 +1,4 @@
-<%= simple_form_for @menu do |form| %>
+<%= simple_form_for [ restaurant, menu ] do |form| %>
   <%= form.input :name,
         label: false,
         placeholder: 'Menu Name',
