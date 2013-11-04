@@ -3,15 +3,15 @@ LaunchNDine::Application.routes.draw do
 
   resources :users, only: [:show] do
     resources :locations,   only: [:new, :create, :update]
-    resources :restaurants, only: [:new, :create]
+    resources :restaurants, shallow: true
     resources :orders,      only: [:index]
   end
 
   resources :locations, only: [:show, :edit, :index, :destroy]
 
-  resources :restaurants, except: [:new, :create] do
-    resources :menus, shallow: true
-    resources :orders,    only: [:index]
+  resources :restaurants do
+    resources  :menus, shallow: true
+    resources :orders, only: [:index]
   end
 
   resources :menus do

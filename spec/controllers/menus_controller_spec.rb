@@ -43,7 +43,7 @@ describe MenusController do
     get :index, restaurant_id: restaurant
     assert_response :ok
     assert_not_nil assigns( :restaurant )
-    assert_not_nil assigns( :menu )
+    assert_not_nil assigns( :menus )
   end
 
   it 'can get edit' do

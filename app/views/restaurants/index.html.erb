@@ -1,4 +1,4 @@
-<h3>Our Restaurants</h3>
+<%= content_tag :h3, 'Our Restaurants' %>
 <%= render @restaurants %>
 
 <% if current_user && current_user.is_owner? %>

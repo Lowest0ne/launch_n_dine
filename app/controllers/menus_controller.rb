@@ -11,7 +11,6 @@ class MenusController < ApplicationController
 
   def index
     @menus = @restaurant.menus
-    @menu = Menu.new
   end
 
   def create
