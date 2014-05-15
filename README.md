@@ -1,6 +1,8 @@
 # Launch 'n Dine
 ### An autonomous food delivery service
 
+![Codeship Image](https://www.codeship.io/projects/e557c940-bdf5-0131-6e49-165e0cc21fc2/status)
+
 ### How to use
 * fork and clone
 * bundle
